@@ -9,15 +9,21 @@ Repositório pra desenvolver os sites de venda da Academia Angatu
 | `site/` | Landing page do curso *Introdução à Prescrição de Cannabis Medicinal* (tema escuro) |
 | `site/js/content.js` | Conteúdo editável: professores, módulos/aulas e URL de captura de leads |
 | `integrations/google-sheets/` | Apps Script que grava os leads da pré-venda numa planilha |
-| `webflow/` | Blocos prontos para colar na página do Webflow (gerados, não editar à mão) |
-| `tools/build_webflow.py` | Gera os blocos de `webflow/` a partir de `site/index.html` |
+| `publish/` | Página raiz do subdomínio (redireciona para a pré-venda) |
+| `.github/workflows/pages.yml` | Publica o site no GitHub Pages a cada push |
 
-## Como a página vai ao ar
+## Como o site vai ao ar
 
-A página fica em **angatumedicinal.org/academia/pre-venda**, dentro do Webflow. Os arquivos CSS, JS e imagens são servidos pelo GitHub Pages deste repositório (`https://dehrolla.github.io/academiaangatu/`).
+O site fica em **https://academia.angatumedicinal.org**, publicado pelo GitHub Pages (gratuito).
 
-- **Mudou CSS, JS, imagens ou `content.js`?** Basta fazer commit e push para `main`. O GitHub Pages publica em cerca de 1 minuto, e o cache dos visitantes expira em até 10 minutos. Não precisa mexer no Webflow.
-- **Mudou o HTML (`site/index.html`)?** Rode `python3 tools/build_webflow.py`, faça commit e push, cole o conteúdo de `webflow/2-embed.html` no Code Embed da página no Webflow e clique em **Publish**.
+| Endereço | Conteúdo |
+|---|---|
+| `/` | Redireciona para `/pre-venda/` (no futuro, pode virar a home da Academia) |
+| `/pre-venda/` | Landing page da pré-venda (`site/`) |
+
+**Para publicar uma mudança:** faça commit e push para `main`. O GitHub Actions publica em cerca de 1 minuto. Quando mudar CSS ou JS, aumente o `?v=` desses arquivos no `site/index.html`, para os visitantes não verem a versão antiga em cache.
+
+O domínio é configurado na Locaweb com um registro CNAME: `academia` → `dehrolla.github.io`.
 
 ## Pré-visualizar localmente
 

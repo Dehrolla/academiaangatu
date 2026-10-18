@@ -1,0 +1,48 @@
+# Publica academia.angatumedicinal.org no GitHub Pages a cada push na main.
+#
+# Estrutura publicada:
+#   /                 -> redireciona para /pre-venda/ (publish/index.html)
+#   /pre-venda/       -> site/
+#   /design-system/   -> só os CSS usados pela página
+name: Publicar site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Montar a pasta do site
+        run: |
+          mkdir -p _site/pre-venda _site/design-system
+          cp -R site/. _site/pre-venda/
+          cp design-system/angatu-tokens.css design-system/angatu-components.css _site/design-system/
+          cp publish/index.html _site/index.html
+          cp publish/index.html _site/404.html
+          echo "academia.angatumedicinal.org" > _site/CNAME
+          find _site -name ".DS_Store" -delete
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
