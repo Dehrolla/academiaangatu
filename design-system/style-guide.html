@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angatu Design System</title>
+<link rel="stylesheet" href="angatu-tokens.css">
+<link rel="stylesheet" href="angatu-components.css">
+<style>
+  /* ---- Style-guide chrome only (not part of the design system) ---- */
+  .sg { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  .sg-nav {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 32px 24px;
+    background: var(--color-dark); color: var(--color-light);
+  }
+  .sg-nav img { height: 28px; width: auto; margin-bottom: 8px; background: var(--color-sand); border-radius: 6px; padding: 4px 8px; }
+  .sg-nav small { display: block; opacity: .6; font-size: 13px; margin-bottom: 32px; }
+  .sg-nav h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; opacity: .5; margin: 24px 0 8px; font-weight: 500; }
+  .sg-nav a { display: block; padding: 6px 0; font-size: 15px; text-decoration: none; opacity: .85; }
+  .sg-nav a:hover { color: var(--color-accent); opacity: 1; }
+  .sg-main { min-width: 0; }
+  .sg-block { padding: 72px 56px; border-bottom: 1px solid var(--dark-a10); }
+  .sg-block:nth-child(even) { background: var(--color-sand); }
+  .sg-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; font-weight: 500; opacity: .55; margin-bottom: 8px; }
+  .sg-title { font-size: 40px; font-weight: 700; margin-bottom: 12px; }
+  .sg-lead { max-width: 720px; opacity: .8; font-size: 17px; line-height: 150%; margin-bottom: 40px; }
+  .sg-sub { font-size: 14px; text-transform: uppercase; letter-spacing: .08em; font-weight: 500; opacity: .55; margin: 48px 0 16px; }
+  .sg-note {
+    font-size: 14px; line-height: 150%; background: #ffa6001f; border-left: 3px solid var(--color-orange);
+    padding: 12px 16px; border-radius: 6px; max-width: 760px; margin-top: 16px;
+  }
+  .sg-code { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; background: var(--dark-a05); padding: 2px 6px; border-radius: 4px; }
+  .sg-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .sg-grid { display: grid; gap: 24px; }
+  .sg-grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .sg-grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .sg-grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .sg-label { font-size: 13px; opacity: .6; margin-top: 10px; }
+
+  /* swatches */
+  .swatch { border-radius: 16px; overflow: hidden; background: #fff; box-shadow: var(--shadow-soft); }
+  .swatch__chip { height: 120px; border-bottom: 1px solid var(--dark-a10); display: flex; align-items: flex-end; padding: 12px; font-size: 13px; font-weight: 500; }
+  .swatch__meta { padding: 14px 16px; font-size: 14px; line-height: 150%; }
+  .swatch__meta b { display: block; font-size: 16px; }
+  .swatch__meta code { font-size: 12px; opacity: .7; }
+  .alpha-chip { height: 56px; border-radius: 10px; border: 1px solid var(--dark-a10); background-image: linear-gradient(45deg,#0000000a 25%,transparent 25%,transparent 75%,#0000000a 75%),linear-gradient(45deg,#0000000a 25%,transparent 25%,transparent 75%,#0000000a 75%); background-size: 12px 12px; background-position: 0 0, 6px 6px; position: relative; overflow: hidden; }
+  .alpha-chip span { position: absolute; inset: 0; }
+
+  /* type specimen */
+  .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--dark-a10); }
+  .type-row__meta { font-size: 13px; line-height: 150%; opacity: .65; }
+  .type-row__meta b { display: block; opacity: 1; font-size: 14px; color: var(--color-dark); }
+
+  /* scales */
+  .radius-demo { width: 96px; height: 96px; background: var(--color-dark); }
+  .shadow-demo { height: 120px; background: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .space-bar { height: 16px; background: var(--color-accent); border-radius: 3px; }
+  .space-row { display: grid; grid-template-columns: 80px 1fr; gap: 16px; align-items: center; font-size: 13px; padding: 4px 0; }
+
+  .dark-stage { background: var(--color-dark); color: var(--color-light); border-radius: var(--radius-xl); padding: 40px; }
+  .doodle { height: 140px; background: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .doodle img { max-height: 100%; }
+  .doodle--dark { background: var(--color-dark); }
+
+  @media (max-width: 900px) {
+    .sg { grid-template-columns: 1fr; }
+    .sg-nav { position: static; height: auto; }
+    .sg-nav nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+    .sg-nav h4 { width: 100%; }
+    .sg-block { padding: 48px 16px; }
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="sg">
+
+<!-- ======================= SIDEBAR ======================= -->
+<aside class="sg-nav">
+  <img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3f753b1735d3facd0a7d6_Menu-Site.png" alt="Angatu">
+  <small>Design System · v1 · out 2026</small>
+  <nav>
+    <h4>Foundations</h4>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing &amp; layout</a>
+    <a href="#radius">Radius &amp; shadows</a>
+    <a href="#graphics">Graphics &amp; icons</a>
+    <h4>Components</h4>
+    <a href="#buttons">Buttons</a>
+    <a href="#navbar">Navbar</a>
+    <a href="#hero">Hero</a>
+    <a href="#services">Service tiles</a>
+    <a href="#lists">Lists</a>
+    <a href="#process">Process</a>
+    <a href="#stats">Stats</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#cards">News &amp; blog cards</a>
+    <a href="#banner">Banner &amp; quote</a>
+    <a href="#faq">FAQ</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#forms">Forms</a>
+    <a href="#footer">Footer</a>
+  </nav>
+</aside>
+
+<main class="sg-main">
+
+<!-- ======================= INTRO ======================= -->
+<section class="sg-block" style="background:var(--color-dark);color:var(--color-light)">
+  <div class="sg-eyebrow" style="opacity:.6">Angatu Medicinal</div>
+  <h1>Design <span class="accent">System</span></h1>
+  <p class="subtitle" style="margin-top:24px;max-width:720px;color:var(--color-sand)">
+    Tokens and components taken from angatumedicinal.org (official colors) and the “On Consult” Webflow template it was built on (component structure). Use them as the starting point for the spin-off.
+  </p>
+  <div class="sg-row" style="margin-top:32px">
+    <span class="sg-code" style="background:#f5f1eb1a">angatu-tokens.css</span>
+    <span class="sg-code" style="background:#f5f1eb1a">angatu-components.css</span>
+  </div>
+</section>
+
+<!-- ======================= COLORS ======================= -->
+<section class="sg-block" id="colors">
+  <div class="sg-eyebrow">Foundations</div>
+  <div class="sg-title">Colors</div>
+  <p class="sg-lead">Dark green, neon green and orange make up the brand. Warm cream and sand neutrals are the backgrounds, and white is used for cards. Orange is Angatu’s own addition: the template had none, and the live site uses it for every main call to action.</p>
+
+  <div class="sg-sub">Brand</div>
+  <div class="sg-grid sg-grid-4">
+    <div class="swatch"><div class="swatch__chip" style="background:#1c3433;color:#75fb91">Aa</div>
+      <div class="swatch__meta"><b>Verde Angatu</b>#1C3433<br><code>--color-dark</code><br>Text, dark sections, hero block</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#75fb91;color:#1c3433">Aa</div>
+      <div class="swatch__meta"><b>Verde Neon</b>#75FB91<br><code>--color-accent</code><br>Highlights on dark, quotes, stats</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#ffa600;color:#1c3433">Aa</div>
+      <div class="swatch__meta"><b>Laranja</b>#FFA600<br><code>--color-orange</code><br>Primary CTAs (nav + hero)</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#5ee67a;color:#1c3433">Aa</div>
+      <div class="swatch__meta"><b>Verde Neon · hover</b>#5EE67A<br><code>--color-accent-hover</code></div></div>
+  </div>
+
+  <div class="sg-sub">Neutrals</div>
+  <div class="sg-grid sg-grid-4">
+    <div class="swatch"><div class="swatch__chip" style="background:#f5f1e8">Aa</div>
+      <div class="swatch__meta"><b>Cream</b>#F5F1E8<br><code>--color-cream</code><br>Default section &amp; page bg</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#efeadf">Aa</div>
+      <div class="swatch__meta"><b>Sand</b>#EFEADF<br><code>--color-sand</code><br>Navbar, alt sections, footer</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#f4f1eb">Aa</div>
+      <div class="swatch__meta"><b>Light</b>#F4F1EB<br><code>--color-light</code><br>Text on dark backgrounds</div></div>
+    <div class="swatch"><div class="swatch__chip" style="background:#fff">Aa</div>
+      <div class="swatch__meta"><b>White</b>#FFFFFF<br><code>--color-white</code><br>Cards and tiles</div></div>
+  </div>
+
+  <div class="sg-sub">Transparent dark green (borders, dividers, hovers)</div>
+  <div class="sg-grid sg-grid-4">
+    <div><div class="alpha-chip"><span style="background:#1c343308"></span></div><div class="sg-label">3% · dropdown hover</div></div>
+    <div><div class="alpha-chip"><span style="background:#1c34331a"></span></div><div class="sg-label">10% · subtle borders</div></div>
+    <div><div class="alpha-chip"><span style="background:#1c343333"></span></div><div class="sg-label">20% · dividers</div></div>
+    <div><div class="alpha-chip"><span style="background:#1c34334d"></span></div><div class="sg-label">30% · input border</div></div>
+  </div>
+
+  <div class="sg-sub">Pairings</div>
+  <div class="sg-grid sg-grid-3">
+    <div class="dark-stage"><b class="h3">Dark</b><p style="margin-top:8px">Light text with neon <span class="accent">highlights</span>. Used for the hero and process sections.</p></div>
+    <div class="tile"><b class="h3">White card</b><p style="margin-top:8px">Dark text on white, placed on cream or sand. Used for most content.</p></div>
+    <div class="tile" style="background:var(--color-sand);box-shadow:none"><b class="h3">Sand</b><p style="margin-top:8px">Alternates with cream so neighboring sections stay distinct.</p></div>
+  </div>
+
+  <p class="sg-note"><b>Differences between the live site and the template:</b> the template had no orange. On the live site, the orange <span class="sg-code">.cta-accent</span> button turns <i>green</i> (#5EE67A) on hover, which looks like a leftover from the template. The tokens add <span class="sg-code">--color-orange-hover: #E69500</span> as a suggested fix. The live H3 is 26px (the template used 28px).</p>
+</section>
+
+<!-- ======================= TYPOGRAPHY ======================= -->
+<section class="sg-block" id="typography">
+  <div class="sg-eyebrow">Foundations</div>
+  <div class="sg-title">Typography</div>
+  <p class="sg-lead">The site uses a single typeface, <b>DM Sans</b>, in weights 300, 400, 500 and 700. Headings are medium (500) except H2, which is bold. Subtitles and large body text use the light weight (300) for a softer look.</p>
+
+  <div class="type-row"><div class="type-row__meta"><b>H1</b>64 / 115% · 500<br>56 · 48 · 38 responsive</div><h1>Olá, somos a <span style="color:#2ea84a">Angatu</span></h1></div>
+  <div class="type-row"><div class="type-row__meta"><b>H2</b>46 / 122% · 700</div><h2>Nossos Serviços</h2></div>
+  <div class="type-row"><div class="type-row__meta"><b>H3</b>26 / 122% · 500</div><h3>Acolhimento</h3></div>
+  <div class="type-row"><div class="type-row__meta"><b>Big text</b>36 / 110% · 500</div><p class="big-text">Bem-estar, felicidade, alma boa.</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Stat</b>56 / 64px · 700</div><p class="stat__value">+500</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Quote</b>28 / 120% · italic</div><p class="testimonial-xl__quote">“Melhor decisão que fizemos!”</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Subtitle</b>24 / 130% · 300</div><p class="subtitle">Associação de apoio à pesquisa e atendimento a pacientes.</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Body big</b>20 / 130% · 300</div><p class="body-big">A Angatu é uma Associação sem fins lucrativos fundada em Belo Horizonte/MG.</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Body</b>18 / 130% · 400</div><p>Esclarecimento sobre todos os processos legais que orbitam o tema da Cannabis Medicinal.</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Small</b>16 / 140% · 400</div><p class="body-small">Nav links, FAQ answers, card text, footer legal.</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Caption</b>14 · 80% opacity</div><p class="caption">Presidente da Angatu · Advogado</p></div>
+  <div class="type-row"><div class="type-row__meta"><b>Extra info</b>18 · 500 · 50% opacity</div><p class="text-extra">Fundada em 2023</p></div>
+  <p class="sg-note">The H1 sample uses a darker green so it stays readable on cream. On the dark hero, highlighted words use <span class="sg-code">.accent</span> (#75FB91).</p>
+</section>
+
+<!-- ======================= SPACING ======================= -->
+<section class="sg-block" id="spacing">
+  <div class="sg-eyebrow">Foundations</div>
+  <div class="sg-title">Spacing &amp; layout</div>
+  <p class="sg-lead">Spacing follows an 8-point rhythm. Sections have 120px of vertical padding (100px on tablet). Content sits in a 1400px container with a 24px gutter. The navbar is fixed and 72px tall.</p>
+  <div style="max-width:720px">
+    <div class="space-row"><span>4</span><div class="space-bar" style="width:4px"></div></div>
+    <div class="space-row"><span>8</span><div class="space-bar" style="width:8px"></div></div>
+    <div class="space-row"><span>12</span><div class="space-bar" style="width:12px"></div></div>
+    <div class="space-row"><span>16</span><div class="space-bar" style="width:16px"></div></div>
+    <div class="space-row"><span>24</span><div class="space-bar" style="width:24px"></div></div>
+    <div class="space-row"><span>32</span><div class="space-bar" style="width:32px"></div></div>
+    <div class="space-row"><span>40</span><div class="space-bar" style="width:40px"></div></div>
+    <div class="space-row"><span>48</span><div class="space-bar" style="width:48px"></div></div>
+    <div class="space-row"><span>64</span><div class="space-bar" style="width:64px"></div></div>
+    <div class="space-row"><span>80</span><div class="space-bar" style="width:80px"></div></div>
+    <div class="space-row"><span>120</span><div class="space-bar" style="width:120px"></div></div>
+  </div>
+  <div class="sg-sub">Layout reference</div>
+  <div class="sg-grid sg-grid-4">
+    <div class="tile tile--sm"><b>1400px</b><div class="sg-label">Container max-width</div></div>
+    <div class="tile tile--sm"><b>950px</b><div class="sg-label">Small container (text pages)</div></div>
+    <div class="tile tile--sm"><b>120 / 100px</b><div class="sg-label">Section padding desktop / tablet</div></div>
+    <div class="tile tile--sm"><b>24 · 40px</b><div class="sg-label">Grid gaps (cards · services)</div></div>
+  </div>
+  <p class="sg-note">Breakpoints (Webflow defaults): 991px tablet · 767px mobile landscape · 479px mobile portrait.</p>
+</section>
+
+<!-- ======================= RADIUS & SHADOWS ======================= -->
+<section class="sg-block" id="radius">
+  <div class="sg-eyebrow">Foundations</div>
+  <div class="sg-title">Radius &amp; shadows</div>
+  <p class="sg-lead">Corners are generously rounded. Cards use 24px, and buttons and inputs use 8px. Shadows are large, soft and low-opacity, and lift slightly on hover.</p>
+  <div class="sg-row" style="gap:32px">
+    <div><div class="radius-demo" style="border-radius:4px"></div><div class="sg-label">4 · dropdown</div></div>
+    <div><div class="radius-demo" style="border-radius:8px"></div><div class="sg-label">8 · button, input</div></div>
+    <div><div class="radius-demo" style="border-radius:12px"></div><div class="sg-label">12 · small tile</div></div>
+    <div><div class="radius-demo" style="border-radius:20px"></div><div class="sg-label">20 · news card</div></div>
+    <div><div class="radius-demo" style="border-radius:24px"></div><div class="sg-label">24 · card, hero</div></div>
+    <div><div class="radius-demo" style="border-radius:32px"></div><div class="sg-label">32 · feature image</div></div>
+    <div><div class="radius-demo" style="border-radius:50%"></div><div class="sg-label">50% · avatar, icon</div></div>
+  </div>
+  <div class="sg-sub">Shadows</div>
+  <div class="sg-grid sg-grid-4">
+    <div><div class="shadow-demo" style="box-shadow:var(--shadow-soft)">soft</div><div class="sg-label">0 2px 30px #1d34330f</div></div>
+    <div><div class="shadow-demo" style="box-shadow:var(--shadow-card)">card</div><div class="sg-label">0 2px 30px #6d77771a</div></div>
+    <div><div class="shadow-demo" style="box-shadow:var(--shadow-card-hover)">card · hover</div><div class="sg-label">0 2px 50px #00000014</div></div>
+    <div><div class="shadow-demo" style="box-shadow:var(--shadow-strong)">strong</div><div class="sg-label">0 2px 30px #00000033</div></div>
+  </div>
+</section>
+
+<!-- ======================= GRAPHICS ======================= -->
+<section class="sg-block" id="graphics">
+  <div class="sg-eyebrow">Foundations</div>
+  <div class="sg-title">Graphics &amp; icons</div>
+  <p class="sg-lead">Abstract line shapes and hand-drawn doodles sit in the corners of sections as background images. Icons are thin outline SVGs. The service icons are illustrated PNGs.</p>
+  <div class="sg-sub">Decorative</div>
+  <div class="sg-grid sg-grid-4">
+    <div><div class="doodle doodle--dark"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d99_Abstract%20Hero%20Home.svg" alt=""></div><div class="sg-label">Abstract Hero Home</div></div>
+    <div><div class="doodle doodle--dark"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7da1_Abstract%20Process.svg" alt=""></div><div class="sg-label">Abstract Process</div></div>
+    <div><div class="doodle"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dd7_Doodle%20Left%20Bottom.svg" alt=""></div><div class="sg-label">Doodle Left Bottom</div></div>
+    <div><div class="doodle"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dfb_Doodle%20Contact.svg" alt=""></div><div class="sg-label">Doodle Contact</div></div>
+  </div>
+  <div class="sg-sub">Icons · 24–28px outline</div>
+  <div class="sg-row" style="gap:28px">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9a_group.svg" alt="group">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9b_shield-check.svg" alt="shield">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9d_check-circle.svg" alt="check">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dd8_phone.svg" alt="phone">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dd9_send-mail.svg" alt="mail">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dda_pin-alt.svg" alt="pin">
+    <img width="28" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7ddc_instagram.svg" alt="instagram">
+  </div>
+  <div class="sg-sub">Service illustrations · 40px in tiles</div>
+  <div class="sg-row" style="gap:28px">
+    <img width="64" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412e065b12d765bc52d87_ico_acolhimento_140x140.png" alt="">
+    <img width="64" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412df4a074e8041a4cb9d_ico_juridico_140x140.png" alt="">
+    <img width="64" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412dfe98b30e31f9e4444_ico_medico_140x140.png" alt="">
+  </div>
+</section>
+
+<!-- ======================= BUTTONS ======================= -->
+<section class="sg-block" id="buttons">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Buttons</div>
+  <p class="sg-lead">Buttons are 54px tall with 32px horizontal padding, an 8px radius and regular-weight text. The navbar version is 48px tall with 20px padding and 16px text. Background color changes over 0.2s on hover.</p>
+  <div class="sg-sub">On light</div>
+  <div class="sg-row">
+    <a class="btn btn--orange" href="#buttons">Associe-se</a>
+    <a class="btn btn--dark" href="#buttons">Fale conosco</a>
+    <a class="btn btn--outline" href="#buttons">Saiba mais</a>
+    <a class="btn btn--accent" href="#buttons">Mais informações</a>
+    <a class="btn btn--orange btn--sm" href="#buttons">Área do Associado</a>
+    <a class="link-more" href="#buttons">Leia mais →</a>
+  </div>
+  <div class="sg-sub">On dark</div>
+  <div class="dark-stage sg-row">
+    <a class="btn btn--orange" href="#buttons">Associe-se</a>
+    <a class="btn btn--accent" href="#buttons">Mais informações</a>
+    <a class="btn btn--ghost" href="#buttons">Ghost hero</a>
+    <a class="link-more" style="color:#fff" href="#buttons">Leia mais →</a>
+  </div>
+  <p class="sg-note"><b>Webflow mapping:</b> <span class="sg-code">.btn--orange</span> = <span class="sg-code">.cta-accent</span> (live) · <span class="sg-code">.btn--accent</span> = template <span class="sg-code">.cta-accent</span> · <span class="sg-code">.btn--dark</span> = <span class="sg-code">.cta-dark</span> · <span class="sg-code">.btn--outline</span> = <span class="sg-code">.cta-outline</span> · <span class="sg-code">.btn--ghost</span> = <span class="sg-code">.cta-dark.ghost-hero</span> · <span class="sg-code">.btn--sm</span> = <span class="sg-code">.nav-cta</span></p>
+</section>
+
+<!-- ======================= NAVBAR ======================= -->
+<section class="sg-block" id="navbar">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Navbar</div>
+  <p class="sg-lead">A fixed bar 72px tall with a sand background, a thin dark-green bottom border, the logo on the left, and links plus orange CTAs on the right.</p>
+  <div style="border-radius:16px;overflow:hidden;box-shadow:var(--shadow-soft)">
+    <div class="navbar">
+      <div class="navbar__inner">
+        <a class="navbar__brand" href="#navbar"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3f753b1735d3facd0a7d6_Menu-Site.png" alt="Angatu"></a>
+        <div class="navbar__menu">
+          <a class="navbar__link" href="#navbar">Home</a>
+          <a class="navbar__link" href="#navbar">Fale conosco</a>
+          <a class="btn btn--orange btn--sm" href="#navbar">Associe-se</a>
+          <a class="btn btn--orange btn--sm" href="#navbar">Área do Associado</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HERO ======================= -->
+<section class="sg-block" id="hero" style="padding-left:0;padding-right:0">
+  <div style="padding:0 56px">
+    <div class="sg-eyebrow">Components</div>
+    <div class="sg-title">Hero</div>
+    <p class="sg-lead">A dark-green block with a 24px radius and 120px of vertical padding. Text takes the left 46% and a photo is anchored on the right. The abstract SVG shape sits behind the bottom edge.</p>
+  </div>
+  <div class="container">
+    <div class="hero" style="padding-top:0">
+      <div class="hero__block">
+        <div class="hero__content">
+          <h1>Olá, somos a <span class="accent">Angatu Medicinal</span></h1>
+          <p class="subtitle hero__subtitle">Associação de apoio à pesquisa e atendimento a pacientes em busca de tratamento com a Cannabis Medicinal.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--orange" href="#hero">Associe-se</a>
+            <a class="btn btn--orange" href="#hero">Área do Associado</a>
+          </div>
+        </div>
+        <div class="hero__image"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65f4a543c517b47262c3d56a_Vovo_Candini.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SERVICES ======================= -->
+<section class="sg-block" id="services">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Service tiles</div>
+  <p class="sg-lead">White cards with a 24px radius, an icon and title at the top, body text, and an optional “read more” link. They lift 2px on hover. The highlighted dark variant is tilted −3° (template feature).</p>
+  <div class="sg-grid sg-grid-3" style="padding:16px 0">
+    <a class="tile-service" href="#services">
+      <div class="tile-service__head"><img class="tile-service__icon" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412e065b12d765bc52d87_ico_acolhimento_140x140.png" alt=""><h3>Acolhimento</h3></div>
+      <p>Atendimento a pacientes para esclarecimento de dúvidas e direcionamento para a melhor via de tratamento.</p>
+    </a>
+    <a class="tile-service tile-service--highlight" href="#services">
+      <div class="tile-service__head"><img class="tile-service__icon" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412df4a074e8041a4cb9d_ico_juridico_140x140.png" alt=""><h3>Apoio Jurídico</h3></div>
+      <p>Esclarecimento sobre todos os processos legais que orbitam o tema da Cannabis Medicinal.</p>
+      <span class="link-more" style="color:#fff">Leia mais</span>
+    </a>
+    <a class="tile-service" href="#services">
+      <div class="tile-service__head"><img class="tile-service__icon" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c412dfe98b30e31f9e4444_ico_medico_140x140.png" alt=""><h3>Orientação médica</h3></div>
+      <p>Corpo médico capacitado para atender pacientes que estão em busca de consultas.</p>
+      <span class="link-more">Leia mais</span>
+    </a>
+  </div>
+</section>
+
+<!-- ======================= LISTS ======================= -->
+<section class="sg-block" id="lists">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Lists &amp; value tiles</div>
+  <div class="sg-grid sg-grid-3">
+    <div>
+      <div class="sg-sub" style="margin-top:0">Icon list</div>
+      <div class="icon-list">
+        <div class="icon-list__item"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9a_group.svg" alt="">Grupo multidisciplinar</div>
+        <div class="icon-list__item"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9b_shield-check.svg" alt="">Acreditamos no respeito e na educação</div>
+        <div class="icon-list__item"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7d9d_check-circle.svg" alt="">Compromisso político e social</div>
+      </div>
+    </div>
+    <div>
+      <div class="sg-sub" style="margin-top:0">Check list</div>
+      <div class="check-list">
+        <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Consulta com médico prescritor</div>
+        <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Apoio jurídico e Habeas Corpus</div>
+        <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Acompanhamento contínuo</div>
+      </div>
+    </div>
+    <div class="tile" style="display:flex;flex-direction:column;align-items:center;gap:32px;text-align:center;padding:50px 32px">
+      <span class="check-circle check-circle--lg"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></span>
+      <div style="display:flex;flex-direction:column;gap:16px"><h3>Acolhimento</h3><p class="body-small">Value tile: centered, with a large check-circle (<span class="sg-code">.tile-value-sticky</span>).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROCESS ======================= -->
+<section class="sg-block" id="process" style="background:var(--color-dark);color:var(--color-light)">
+  <div class="sg-eyebrow" style="opacity:.6">Components</div>
+  <div class="sg-title">Process</div>
+  <p class="sg-lead" style="color:var(--color-sand)">A vertical timeline on a dark section. The dot and rail fill with neon green as you scroll (a Webflow interaction). Steps already reached are shown filled.</p>
+  <div class="process">
+    <div class="process__step">
+      <div class="process__rail"><div class="process__dot is-done"></div><div class="process__line is-done"></div></div>
+      <div class="process__body"><h3>Entre em contato</h3><p>Fale com a nossa equipe de acolhimento pelo WhatsApp ou e-mail.</p></div>
+    </div>
+    <div class="process__step">
+      <div class="process__rail"><div class="process__dot is-done"></div><div class="process__line"></div></div>
+      <div class="process__body"><h3>Associe-se</h3><p>Preencha o cadastro e envie a documentação necessária.</p></div>
+    </div>
+    <div class="process__step">
+      <div class="process__rail"><div class="process__dot"></div><div class="process__line"></div></div>
+      <div class="process__body"><h3>Inicie o tratamento</h3><p>Receba orientação médica e acompanhamento contínuo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= STATS ======================= -->
+<section class="sg-block" id="stats">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Stats</div>
+  <div class="stat-row">
+    <div class="stat"><span class="stat__value">+500</span><span class="text-extra">pacientes acolhidos</span></div>
+    <div class="stat"><span class="stat__value">12</span><span class="text-extra">profissionais parceiros</span></div>
+  </div>
+  <div class="sg-sub">Tiles</div>
+  <div class="sg-grid sg-grid-2">
+    <div class="dark-stage" style="padding:24px">
+      <div class="sg-grid sg-grid-2" style="gap:16px">
+        <div class="tile-stat-dark"><span class="stat__value stat__value--accent">2023</span><span>Fundação</span></div>
+        <div class="tile-stat-dark"><span class="stat__value stat__value--accent">BH</span><span>Belo Horizonte</span></div>
+      </div>
+    </div>
+    <div class="sg-grid sg-grid-2" style="gap:16px">
+      <div class="tile-stat-white"><span class="stat__value">98%</span><span class="body-small">satisfação</span></div>
+      <div class="tile-stat-white"><span class="stat__value">24h</span><span class="body-small">tempo de resposta</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TESTIMONIALS ======================= -->
+<section class="sg-block" id="testimonials">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Testimonials</div>
+  <p class="sg-lead">The live site uses a compact card with an avatar, quote and author. The template’s large card with an italic 28px quote is also available.</p>
+  <div class="sg-grid sg-grid-2" style="align-items:start">
+    <div class="testimonial">
+      <img class="testimonial__avatar" src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/688fd889961d84e358b64067_Manoel_100x100.png" alt="">
+      <div class="testimonial__body">
+        <p class="testimonial__quote">“Após começar o tratamento com a Cannabis Medicinal, meu pai melhorou muito a qualidade de vida! Dorme melhor, um sono profundo e restaurador.”</p>
+        <p class="testimonial__author">– Luciana: filha do paciente Manoel da Silva (83 anos)</p>
+      </div>
+    </div>
+    <div class="testimonial-xl">
+      <p class="testimonial-xl__quote">“É um tratamento incrível que mudou a vida dele — e a nossa.”</p>
+      <div class="testimonial-xl__foot">
+        <img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3f753b1735d3facd0a7d6_Menu-Site.png" alt="" style="height:28px;width:auto">
+        <div class="testimonial-xl__divider"></div>
+        <div><div style="font-size:16px">Bárbara</div><div class="caption">neta do paciente</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CARDS ======================= -->
+<section class="sg-block" id="cards">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">News &amp; blog cards</div>
+  <p class="sg-lead">The horizontal news card was added for the “Angatu e o poder público” and “Angatu na Mídia” sections. The vertical blog card comes from the template.</p>
+  <div class="news-card" style="max-width:900px">
+    <div class="news-card__image" style="background-image:url('https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/6796a88de27b97fd145723f1_Debate_560x220.png')"></div>
+    <div class="news-card__body">
+      <div>
+        <div class="news-card__title">Debate Público: Cannabis e ciência</div>
+        <p class="news-card__text">O debate buscou esclarecer o cenário médico, científico e acadêmico no estado de MG e formas de viabilizar o tratamento na rede pública.</p>
+      </div>
+      <a class="news-card__link" href="#cards">Assista ao debate</a>
+    </div>
+  </div>
+  <div class="sg-sub">Blog card</div>
+  <div class="sg-grid sg-grid-3">
+    <a class="blog-card" href="#cards">
+      <div class="blog-card__image"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c3d674ee70d6a3c9b3584e_Plant_300x300.png" alt=""></div>
+      <div class="blog-card__body"><span class="text-extra">Pesquisa</span><h3>O que é a Cannabis Medicinal?</h3></div>
+    </a>
+    <a class="blog-card" href="#cards">
+      <div class="blog-card__image"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c3d67384e1f152ef6ad6c1_Oil_300x300.png" alt=""></div>
+      <div class="blog-card__body"><span class="text-extra">Tratamento</span><h3>Como funciona o óleo</h3></div>
+    </a>
+    <a class="blog-card" href="#cards">
+      <div class="blog-card__image"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c3d66d97c75ec4ba958fc4_Lab_300x300.png" alt=""></div>
+      <div class="blog-card__body"><span class="text-extra">Ciência</span><h3>Evidências científicas</h3></div>
+    </a>
+  </div>
+</section>
+
+<!-- ======================= BANNER & QUOTE ======================= -->
+<section class="sg-block" id="banner">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Banner &amp; blockquote</div>
+  <div class="banner" style="border-radius:24px;background-image:url('https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65c3c32e86ea718d4b2c5756_BG_Inspiracional.png');padding:80px 32px">
+    <div class="banner__inner" style="gap:24px">
+      <p class="big-text">Angatu: do Tupi-Guarani “Bem-estar, felicidade, alma boa.”</p>
+      <p class="body-big" style="color:inherit">Promovemos a possibilidade das pessoas cuidarem de si mesmas.</p>
+    </div>
+  </div>
+  <div class="sg-sub">Blockquote (rich text)</div>
+  <blockquote>A cannabis medicinal é um direito à saúde, e o acesso precisa ser seguro, informado e acolhedor.</blockquote>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="sg-block" id="faq">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">FAQ</div>
+  <p class="sg-lead">White expandable rows with a 24px radius. The plus icon is drawn with two 18×2px bars and turns into a minus when opened. (From the template; not used on the live site yet.)</p>
+  <div class="faq" style="max-width:760px">
+    <details class="faq__item" open><summary>Como faço para me associar?<span class="faq__plus"></span></summary><p>Clique em “Associe-se”, preencha o formulário e nossa equipe de acolhimento entrará em contato.</p></details>
+    <details class="faq__item"><summary>Preciso de receita médica?<span class="faq__plus"></span></summary><p>Sim. Ajudamos você a encontrar um médico prescritor parceiro.</p></details>
+    <details class="faq__item"><summary>A Angatu tem fins lucrativos?<span class="faq__plus"></span></summary><p>Não. A Angatu é uma associação sem fins lucrativos.</p></details>
+  </div>
+</section>
+
+<!-- ======================= PRICING ======================= -->
+<section class="sg-block" id="pricing">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Pricing / membership tile</div>
+  <p class="sg-lead">Template component, useful for membership plans or course packages in the spin-off.</p>
+  <div class="sg-grid sg-grid-3">
+    <div class="tile-pricing">
+      <div style="display:flex;flex-direction:column;gap:16px"><h2 style="font-size:32px">Associado</h2><p class="body-small">Acesso a acolhimento, orientação médica e jurídica.</p></div>
+      <hr class="divider">
+      <div class="check-list">
+        <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Acolhimento</div>
+        <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Orientação médica</div>
+      </div>
+      <h3 style="font-size:36px;font-weight:700">R$ 00<span class="body-small" style="font-weight:400">/mês</span></h3>
+      <a class="btn btn--orange" href="#pricing">Associe-se</a>
+    </div>
+    <div class="tile-pricing" style="background:var(--color-dark);color:var(--color-light)">
+      <div style="display:flex;flex-direction:column;gap:16px"><h2 style="font-size:32px">Academia</h2><p class="body-small">Variant on dark for a featured plan.</p></div>
+      <hr class="divider" style="background:#ffffff33">
+      <div class="check-list">
+        <div class="check-list__item"><span class="check-circle" style="background:var(--color-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="#1c3433" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Cursos e materiais</div>
+        <div class="check-list__item"><span class="check-circle" style="background:var(--color-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="#1c3433" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Certificado</div>
+      </div>
+      <h3 style="font-size:36px;font-weight:700">R$ 00<span class="body-small" style="font-weight:400">/mês</span></h3>
+      <a class="btn btn--accent" href="#pricing">Quero participar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FORMS ======================= -->
+<section class="sg-block" id="forms">
+  <div class="sg-eyebrow">Components</div>
+  <div class="sg-title">Forms</div>
+  <p class="sg-lead">Inputs are 52px tall with an 8px radius, a 30% dark-green border, and a full dark-green border on focus. Labels are medium (500). The success message uses a neon green background.</p>
+  <div class="sg-grid sg-grid-2" style="align-items:start">
+    <form class="tile-form form" onsubmit="event.preventDefault();this.nextElementSibling.hidden=false">
+      <div class="field"><label class="field__label" for="f-name">Nome</label><input class="input" id="f-name" placeholder="Seu nome"></div>
+      <div class="field"><label class="field__label" for="f-mail">E-mail</label><input class="input" id="f-mail" type="email" placeholder="voce@email.com"></div>
+      <div class="field"><label class="field__label" for="f-msg">Mensagem</label><textarea class="textarea" id="f-msg" placeholder="Como podemos ajudar?"></textarea></div>
+      <button class="btn btn--dark" type="submit">Enviar mensagem</button>
+    </form>
+    <div class="form-success" hidden>Obrigado! Sua mensagem foi enviada.</div>
+  </div>
+  <div class="sg-sub">Success state</div>
+  <div class="form-success" style="max-width:578px">Obrigado! Sua mensagem foi enviada.</div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<section class="sg-block" id="footer" style="padding:72px 0 0">
+  <div style="padding:0 56px 32px">
+    <div class="sg-eyebrow">Components</div>
+    <div class="sg-title">Footer</div>
+    <p class="sg-lead" style="margin-bottom:0">A sand background with a white contact tile (“Vamos conversar”), social icons in round dark buttons, and a bottom bar with the logo and legal text.</p>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="tile-contact">
+        <div class="body-big" style="font-weight:500">Vamos conversar</div>
+        <a class="contact-line" href="#footer"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dd9_send-mail.svg" alt="">contato@angatumedicinal.org</a>
+        <a class="contact-line" href="#footer"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dd8_phone.svg" alt="">31 97246-9883 (Whatsapp)</a>
+        <span class="contact-line"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7dda_pin-alt.svg" alt="">Belo Horizonte - MG</span>
+        <hr class="divider">
+        <div><a class="social-dot" href="#footer" aria-label="Instagram"><img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3eb92a846b10b92bf7ddc_instagram.svg" alt=""></a></div>
+      </div>
+      <div class="footer__bottom">
+        <img src="https://cdn.prod.website-files.com/65b3eb92a846b10b92bf7d1b/65b3f753b1735d3facd0a7d6_Menu-Site.png" alt="Angatu">
+        <span>Angatu Medicinal - 2024 • Todos os direitos reservados</span>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</main>
+</div>
+</body>
+</html>

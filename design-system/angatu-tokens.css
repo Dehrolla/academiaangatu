@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Angatu Design Tokens
+   Source: angatumedicinal.org (official colors) + "On Consult" Webflow
+   template (component structure). Extracted 2026-10-18.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500&display=swap");
+
+:root {
+  /* ---- Brand colors (official, from angatumedicinal.org) ---------------- */
+  --color-dark:          #1c3433; /* Verde Angatu: text, dark sections, hero block */
+  --color-accent:        #75fb91; /* Verde Neon: highlights on dark, process, stats */
+  --color-accent-hover:  #5ee67a;
+  --color-orange:        #ffa600; /* Laranja: primary CTA (nav + hero buttons) */
+  --color-orange-hover:  #e69500; /* suggested; the live site falls back to green on hover */
+
+  /* ---- Neutrals ---------------------------------------------------------- */
+  --color-cream:         #f5f1e8; /* --light: default section background */
+  --color-light:         #f4f1eb; /* text on dark backgrounds */
+  --color-sand:          #efeadf; /* --light-darker: navbar, alt sections, footer */
+  --color-white:         #ffffff; /* cards / tiles */
+
+  /* ---- Alpha variants of dark green (borders, dividers, hovers) ---------- */
+  --dark-a03:  #1c343308; /* dropdown hover */
+  --dark-a05:  #1c34330d; /* outline-button hover */
+  --dark-a10:  #1c34331a; /* dropdown border */
+  --dark-a16:  #1c343329; /* navbar bottom border */
+  --dark-a20:  #1c343333; /* dividers */
+  --dark-a30:  #1c34334d; /* input border */
+  --dark-a48:  #1c34337a; /* placeholder */
+  --light-a40: #f4f1eb66; /* process line on dark */
+  --light-a07: #f5f1eb12; /* ghost button hover on dark */
+
+  /* ---- Typography --------------------------------------------------------- */
+  --font-main: "DM Sans", sans-serif;
+
+  --type-h1:          64px; /* 500, lh 115% — 56 / 48 / 38 on tablet / mobile-l / mobile */
+  --type-h2:          46px; /* 700, lh 122% */
+  --type-h3:          26px; /* 500, lh 122% (template used 28) */
+  --type-subtitle:    24px; /* 300, lh 130% */
+  --type-quote:       28px; /* italic, lh 120% */
+  --type-big-text:    36px; /* 500, lh 110% */
+  --type-stat:        56px; /* 700, lh 64px */
+  --type-body-big:    20px; /* 300, lh 130% */
+  --type-body:        18px; /* 400, lh 130% */
+  --type-small:       16px; /* 400, lh 140% */
+  --type-caption:     14px;
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* ---- Radius ------------------------------------------------------------ */
+  --radius-xs:   4px;  /* dropdown list */
+  --radius-sm:   8px;  /* buttons, inputs */
+  --radius-md:  12px;  /* small tiles, stat tiles */
+  --radius-lg:  20px;  /* news cards, testimonials (live custom) */
+  --radius-xl:  24px;  /* cards, hero block, FAQ */
+  --radius-2xl: 32px;  /* feature images */
+  --radius-full: 50%;
+
+  /* ---- Shadows ----------------------------------------------------------- */
+  --shadow-card:       0 2px 30px #6d77771a;
+  --shadow-card-hover: 0 2px 50px #00000014;
+  --shadow-soft:       0 2px 30px #1d34330f;
+  --shadow-strong:     0 2px 30px #00000033; /* testimonial cards (live) */
+
+  /* ---- Spacing scale ----------------------------------------------------- */
+  --space-4: 4px;   --space-8: 8px;   --space-12: 12px; --space-16: 16px;
+  --space-24: 24px; --space-32: 32px; --space-40: 40px; --space-48: 48px;
+  --space-64: 64px; --space-80: 80px; --space-120: 120px;
+
+  /* ---- Layout ------------------------------------------------------------ */
+  --container-max:   1400px;
+  --container-nav:   1512px;
+  --container-small:  950px;
+  --gutter:            24px;
+  --section-pad-y:    120px; /* 100 tablet */
+  --navbar-height:     72px;
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --transition: .2s ease;
+}
