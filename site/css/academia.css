@@ -221,6 +221,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 
 /* ---- Preços ------------------------------------------------------------ */
 .pricing { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; max-width: 1040px; margin: 0 auto; align-items: stretch; }
+.pricing--single { grid-template-columns: minmax(0, 560px); justify-content: center; }
 @media (max-width: 860px) { .pricing { grid-template-columns: 1fr; } }
 .price-card {
   position: relative; display: flex; flex-direction: column; gap: 28px; padding: 48px 40px;
