@@ -148,6 +148,26 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   color: var(--color-accent); background: #75fb9114; border: 1px solid #75fb9133; border-radius: 6px; padding: 4px 10px;
 }
 .teacher__bio { font-size: 16px; line-height: 150%; color: var(--text-muted); }
+.teacher__head { display: flex; flex-direction: column; gap: 4px; }
+.teacher__area { font-size: 15px; color: var(--text-subtle); }
+.teacher__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.teacher__module {
+  font-size: 13px; font-weight: 500; color: var(--text-muted);
+  border: 1px solid var(--line-strong); border-radius: 6px; padding: 4px 10px;
+}
+.teacher__ig {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 4px;
+  font-size: 14px; color: var(--text-subtle); text-decoration: none;
+}
+.teacher__ig:hover { color: var(--color-accent); }
+.teacher__ig svg { width: 16px; height: 16px; }
+.teacher__body { flex: 1; }
+.teacher__photo img { object-position: center 40%; }
+.teacher--draft { border-style: dashed; border-color: #ffa60080; }
+.teacher__draft {
+  position: absolute; top: 12px; left: 12px; z-index: 1; font-size: 12px; font-weight: 700;
+  background: var(--color-orange); color: var(--color-dark); border-radius: 999px; padding: 4px 10px;
+}
 
 /* ---- Conteúdo programático (accordion) -------------------------------- */
 .modules { display: flex; flex-direction: column; gap: 12px; max-width: 960px; margin: 0 auto; }

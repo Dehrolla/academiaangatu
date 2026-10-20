@@ -7,15 +7,31 @@
 
   // ---- Professores ------------------------------------------------------
   const avatar = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>';
+  const igIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
   const teachersEl = document.getElementById("teachers-grid");
   if (teachersEl) {
-    teachersEl.innerHTML = data.teachers.map((t) => `
-      <article class="teacher">
-        <div class="teacher__photo">${t.photo ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}" loading="lazy">` : avatar}</div>
+    // ?previa na URL mostra também quem ainda não autorizou o uso de imagem.
+    const preview = new URLSearchParams(location.search).has("previa");
+    const moduleLabel = (n) => {
+      const m = data.modules[n - 1];
+      return m ? `Módulo ${n} · ${m.short || m.title}` : `Módulo ${n}`;
+    };
+    teachersEl.innerHTML = data.teachers.filter((t) => t.published || preview).map((t) => `
+      <article class="teacher${t.published ? "" : " teacher--draft"}">
+        <div class="teacher__photo">${t.photo ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}" loading="lazy" width="800" height="680">` : avatar}
+          ${t.published ? "" : '<span class="teacher__draft">Prévia: não publicado</span>'}
+        </div>
         <div class="teacher__body">
-          <h3 class="teacher__name">${esc(t.name)}</h3>
-          <span class="crm">${esc(t.crm)}</span>
+          <div class="teacher__head">
+            <h3 class="teacher__name">${esc(t.name)}</h3>
+            ${t.area ? `<span class="teacher__area">${esc(t.area)}</span>` : ""}
+          </div>
+          <div class="teacher__tags">
+            <span class="crm">${esc(t.registry)}</span>
+            ${(t.modules || []).map((n) => `<span class="teacher__module">${esc(moduleLabel(n))}</span>`).join("")}
+          </div>
           <p class="teacher__bio">${esc(t.bio)}</p>
+          ${t.instagram ? `<a class="teacher__ig" href="https://instagram.com/${encodeURIComponent(t.instagram)}" target="_blank" rel="noopener">${igIcon}@${esc(t.instagram)}</a>` : ""}
         </div>
       </article>`).join("");
   }

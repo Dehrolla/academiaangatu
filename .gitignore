@@ -4,3 +4,8 @@ __pycache__/
 
 # Material bruto (fotos originais, autorizações, planilhas). Só o que vai para o site entra em site/.
 conteudo/
+
+# Fotos de professores sem autorização de uso de imagem: só locais, para a prévia (?previa).
+# Remova a linha quando a pessoa autorizar.
+site/img/professores/antonio-oliveira.jpg
+site/img/professores/fernando-avila.jpg
