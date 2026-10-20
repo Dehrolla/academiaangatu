@@ -48,7 +48,7 @@ window.ACADEMIA = {
     },
     {
       name: "Lucas Candini",
-      registry: "OAB-MG 208.02",
+      registry: "OAB-MG 208.026",
       area: "Advogado",
       modules: [1],
       photo: "img/professores/lucas-candini.jpg",
@@ -73,7 +73,7 @@ window.ACADEMIA = {
       modules: [1],
       photo: "img/professores/antonio-oliveira.jpg",
       instagram: "",
-      published: false,
+      published: true,
       bio: "Professor Associado do Departamento de Farmacologia da UFMG. Farmacêutico pela UFMG, possui mestrado em Farmacologia, doutorado em Neuroquímica pela Universidade de Freiburg (Alemanha) e pós-doutorado em Neurociências pela Universidade da Flórida (EUA) e pela UFMG."
     },
     {
@@ -83,7 +83,7 @@ window.ACADEMIA = {
       modules: [],
       photo: "",
       instagram: "",
-      published: false,
+      published: true,
       bio: "Bio a confirmar: formação, tempo de prática com cannabis medicinal e experiência como docente."
     },
     {
@@ -93,7 +93,7 @@ window.ACADEMIA = {
       modules: [1],
       photo: "img/professores/fernando-avila.jpg",
       instagram: "fernando_c_avila",
-      published: false,
+      published: true,
       bio: "Advogado, mestre em Direito e presidente da Comissão de Cannabis Medicinal da OAB/MG. Consultor jurídico da Associação Angatu, atua na defesa do acesso à cannabis medicinal, na regulamentação do setor e na segurança jurídica das associações e dos pacientes."
     },
     {
@@ -103,7 +103,7 @@ window.ACADEMIA = {
       modules: [],
       photo: "",
       instagram: "",
-      published: false,
+      published: true,
       bio: "Bio a confirmar: formação, tempo de prática com cannabis medicinal e experiência como docente."
     }
   ],
