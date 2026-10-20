@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 *.pyc
+
+# Material bruto (fotos originais, autorizações, planilhas). Só o que vai para o site entra em site/.
+conteudo/
