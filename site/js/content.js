@@ -31,7 +31,7 @@ window.ACADEMIA = {
       registry: "CRM-SP 221.657",
       area: "Psiquiatria",
       modules: [6],
-      photo: "img/professores/felipe-mourao.jpg",
+      photo: "img/professores/felipe-mourao.jpg?v=2",
       instagram: "doutordiamba",
       published: true,
       bio: "Pós-graduado em Psiquiatria pela Santa Casa de São Paulo e pós-graduando em Psicoterapia Assistida por Psicodélicos pelo Instituto Alma Viva. Prescreve cannabis medicinal desde 2021 e acompanha crianças, adolescentes e adultos com TEA, TDAH, epilepsia, ansiedade e insônia."
