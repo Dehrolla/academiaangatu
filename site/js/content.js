@@ -69,7 +69,7 @@ window.ACADEMIA = {
     {
       name: "Dr. Antônio de Oliveira",
       registry: "",
-      area: "Farmacêutico",
+      area: "Neurocientista, PhD.",
       modules: [2],
       photo: "img/professores/antonio-oliveira.jpg",
       instagram: "",
