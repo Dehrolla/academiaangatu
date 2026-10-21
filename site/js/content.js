@@ -98,7 +98,7 @@ window.ACADEMIA = {
     },
     {
       name: "Dr. Alexandre Versiani",
-      registry: "Registro a confirmar",
+      registry: "CRM-MG 39.103",
       area: "",
       modules: [7],
       photo: "img/professores/alexandre-versiani.jpg",
