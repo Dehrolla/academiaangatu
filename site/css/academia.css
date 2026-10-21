@@ -122,12 +122,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   display: flex; flex-direction: column; gap: 20px; padding: 40px 32px;
   background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-xl);
 }
-.authority__value { font-size: var(--type-stat); line-height: 1; font-weight: 700; color: var(--color-accent); }
 .authority__icon {
   width: 56px; height: 56px; border-radius: 16px; background: #75fb911a; color: var(--color-accent);
   display: grid; place-items: center;
 }
 .authority__icon svg { width: 28px; height: 28px; }
+.authority p { line-height: 150%; }
 
 /* ---- Professores ------------------------------------------------------- */
 .teacher {
