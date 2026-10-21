@@ -99,10 +99,10 @@ window.ACADEMIA = {
     {
       name: "Dr. Alexandre Versiani",
       registry: "CRM-MG 39.103",
-      area: "",
+      area: "Clínica Médica",
       modules: [7],
       photo: "img/professores/alexandre-versiani.jpg",
-      instagram: "",
+      instagram: "alexandreversiani",
       published: true,
       bio: "Alexandre Silva Versiani é médico, graduado pela Universidade Estadual de Montes Claros (UNIMONTES). Possui certificação internacional em Cannabis Medicinal pela Wecann Academy e é membro da Associação Médica Brasileira de Endocanabinologia. Atualmente coordena o Núcleo de Cannabis Medicinal e Psicologia da Dor do Hospital Aroldo Tourinho."
     }
