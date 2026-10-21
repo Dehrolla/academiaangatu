@@ -78,7 +78,7 @@ window.ACADEMIA = {
     },
     {
       name: "Dr. Bruno Amato",
-      registry: "Registro a confirmar",
+      registry: "CRM-MG 48.288",
       area: "",
       modules: [3],
       photo: "img/professores/bruno-amato.jpg",
