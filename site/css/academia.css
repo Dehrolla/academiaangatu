@@ -265,6 +265,27 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 .lead-success b { font-size: 20px; }
 
+/* ---- Sobre a Angatu ------------------------------------------------- */
+.about { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
+.about__text { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.about__text p { line-height: 150%; }
+.about__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.about-card {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 20px; min-height: 168px;
+  padding: 28px 24px; background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-xl);
+  font-size: 18px; font-weight: 500; line-height: 130%;
+}
+.about-card__icon {
+  width: 48px; height: 48px; border-radius: 14px; background: #75fb911a; color: var(--color-accent);
+  display: grid; place-items: center;
+}
+.about-card__icon svg { width: 24px; height: 24px; }
+.about-card--stat { background: linear-gradient(160deg, #234240, #1c3433); border-color: #75fb9159; justify-content: flex-end; }
+.about-card--stat strong { font-size: 48px; line-height: 1; font-weight: 700; color: var(--color-accent); letter-spacing: -.02em; }
+.about-card--stat span { color: var(--text-muted); font-weight: 400; }
+@media (max-width: 991px) { .about { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 420px) { .about-card { min-height: 0; padding: 22px 18px; font-size: 16px; } .about-card--stat strong { font-size: 40px; } }
+
 /* ---- Footer ------------------------------------------------------------ */
 .site-footer { background: var(--bg-base); border-top: 1px solid var(--line); padding: 72px 0 40px; font-size: 16px; }
 .site-footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; }
