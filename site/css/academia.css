@@ -44,6 +44,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   color: var(--color-accent);
 }
 .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.eyebrow--wrap { align-items: flex-start; line-height: 140%; letter-spacing: .06em; font-size: 13px; }
+.eyebrow--wrap::before { flex: none; margin-top: 5px; }
 .section-head { display: flex; flex-direction: column; gap: 20px; max-width: 760px; margin-bottom: 64px; }
 .section-head--center { align-items: center; text-align: center; margin-left: auto; margin-right: auto; }
 .section-note { font-size: 13px; line-height: 140%; color: var(--text-subtle); margin-top: -8px; }

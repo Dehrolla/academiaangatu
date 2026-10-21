@@ -36,6 +36,7 @@ jobs:
           cp design-system/angatu-tokens.css design-system/angatu-components.css _site/design-system/
           cp publish/index.html _site/index.html
           cp publish/index.html _site/404.html
+          cp site/img/favicon-32.png _site/favicon.ico   # navegadores pedem /favicon.ico na raiz
           echo "academia.angatumedicinal.org" > _site/CNAME
           find _site -name ".DS_Store" -delete
           find _site -type f | sort
