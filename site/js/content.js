@@ -84,7 +84,7 @@ window.ACADEMIA = {
       photo: "",
       instagram: "",
       published: true,
-      bio: "Médico de família e comunidade com pós-graduação em psiquiatria. Docente do curso de Medicina da UFSJ desde 2015, coordenou a implantação da Residência em MFC (2016–2017) e o Programa Mais Médicos pela UFSJ (2019–2024). Em 2024 e 2025, foi professor da pós-graduação em Saúde Mental do Hospital Israelita Albert Einstein."
+      bio: "Médico de família e Comunidade com pós graduação em psiquiatria. Docente no curso de Medicina da UFSJ desde 2015. Foi professor do curso de pós graduação em saúde mental do Hospital Albert Einstein de São Paulo em 2024 e 2025."
     },
     {
       name: "Fernando Ávila",
