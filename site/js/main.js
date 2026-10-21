@@ -12,10 +12,6 @@
   if (teachersEl) {
     // ?previa na URL mostra também quem ainda não autorizou o uso de imagem.
     const preview = new URLSearchParams(location.search).has("previa");
-    const moduleLabel = (n) => {
-      const m = data.modules[n - 1];
-      return m ? `Módulo ${n} · ${m.short || m.title}` : `Módulo ${n}`;
-    };
     teachersEl.innerHTML = data.teachers.filter((t) => t.published || preview).map((t) => `
       <article class="teacher${t.published ? "" : " teacher--draft"}">
         <div class="teacher__photo">${t.photo ? `<img src="${esc(t.photo)}" alt="${esc(t.name)}" loading="lazy" width="800" height="680">` : avatar}
@@ -26,10 +22,7 @@
             <h3 class="teacher__name">${esc(t.name)}</h3>
             ${t.area ? `<span class="teacher__area">${esc(t.area)}</span>` : ""}
           </div>
-          <div class="teacher__tags">
-            <span class="crm">${esc(t.registry)}</span>
-            ${(t.modules || []).map((n) => `<span class="teacher__module">${esc(moduleLabel(n))}</span>`).join("")}
-          </div>
+          <span class="crm">${esc(t.registry)}</span>
           <p class="teacher__bio">${esc(t.bio)}</p>
           ${t.instagram ? `<a class="teacher__ig" href="https://instagram.com/${encodeURIComponent(t.instagram)}" target="_blank" rel="noopener">${igIcon}@${esc(t.instagram)}</a>` : ""}
         </div>

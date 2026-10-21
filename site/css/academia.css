@@ -150,11 +150,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .teacher__bio { font-size: 16px; line-height: 150%; color: var(--text-muted); }
 .teacher__head { display: flex; flex-direction: column; gap: 4px; }
 .teacher__area { font-size: 15px; color: var(--text-subtle); }
-.teacher__tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.teacher__module {
-  font-size: 13px; font-weight: 500; color: var(--text-muted);
-  border: 1px solid var(--line-strong); border-radius: 6px; padding: 4px 10px;
-}
 .teacher__ig {
   display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 4px;
   font-size: 14px; color: var(--text-subtle); text-decoration: none;

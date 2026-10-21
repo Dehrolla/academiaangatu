@@ -11,7 +11,7 @@ window.ACADEMIA = {
 
   // ---- Professores (grid para 9) ----------------------------------------
   // Fonte: conteudo/professores/Professores-Academia-Angatu.xlsx (fora do repositório).
-  // registry: CRM, OAB ou CRF. modules: números dos módulos que a pessoa leciona.
+  // registry: CRM, OAB ou CRF. modules: módulos que a pessoa leciona (não aparece no card; só referência).
   // photo: recorte gerado por tools/crop_faces.swift; vazio mostra o avatar padrão.
   // published: só true depois da autorização de uso de imagem. Para ver todos,
   // inclusive os não publicados, abra a página com ?previa na URL.
@@ -31,7 +31,7 @@ window.ACADEMIA = {
       registry: "CRM-SP 221.657",
       area: "Psiquiatria",
       modules: [5],
-      photo: "",
+      photo: "img/professores/felipe-mourao.jpg",
       instagram: "doutordiamba",
       published: true,
       bio: "Pós-graduado em Psiquiatria pela Santa Casa de São Paulo e pós-graduando em Psicoterapia Assistida por Psicodélicos pelo Instituto Alma Viva. Prescreve cannabis medicinal desde 2021 e acompanha crianças, adolescentes e adultos com TEA, TDAH, epilepsia, ansiedade e insônia."
@@ -80,11 +80,11 @@ window.ACADEMIA = {
       name: "Dr. Bruno Amato",
       registry: "Registro a confirmar",
       area: "",
-      modules: [],
+      modules: [2],
       photo: "",
       instagram: "",
       published: true,
-      bio: "Bio a confirmar: formação, tempo de prática com cannabis medicinal e experiência como docente."
+      bio: "Médico de família e comunidade com pós-graduação em psiquiatria. Docente do curso de Medicina da UFSJ desde 2015, coordenou a implantação da Residência em MFC (2016–2017) e o Programa Mais Médicos pela UFSJ (2019–2024). Em 2024 e 2025, foi professor da pós-graduação em Saúde Mental do Hospital Israelita Albert Einstein."
     },
     {
       name: "Fernando Ávila",
@@ -100,11 +100,11 @@ window.ACADEMIA = {
       name: "Dr. Alexandre Versiani",
       registry: "Registro a confirmar",
       area: "",
-      modules: [],
-      photo: "",
+      modules: [6],
+      photo: "img/professores/alexandre-versiani.jpg",
       instagram: "",
       published: true,
-      bio: "Bio a confirmar: formação, tempo de prática com cannabis medicinal e experiência como docente."
+      bio: "Alexandre Silva Versiani é médico, graduado pela Universidade Estadual de Montes Claros (UNIMONTES). Possui certificação internacional em Cannabis Medicinal pela Wecann Academy e é membro da Associação Médica Brasileira de Endocanabinologia. Atualmente coordena o Núcleo de Cannabis Medicinal e Psicologia da Dor do Hospital Aroldo Tourinho."
     }
   ],
 
