@@ -5,6 +5,7 @@
 // --estender: quando a foto é apertada demais para o enquadramento padrão, em vez
 // de aumentar o rosto, completa as bordas com uma versão desfocada da própria foto.
 // --rosto=N: altura do rosto em relação ao recorte (padrão 0.42).
+// --centro-x=N: posição horizontal do centro do rosto no recorte (padrão 0.5 = centralizado).
 //
 // Para cada imagem: detecta o maior rosto (framework Vision do macOS), recorta
 // na proporção do card (4:3,4) com o rosto centralizado e ocupando FACE_RATIO
@@ -20,14 +21,16 @@ import Vision
 
 let OUT_W = 800.0, OUT_H = 680.0          // mesma proporção do .teacher__photo (4 / 3.4)
 var FACE_RATIO = 0.42                       // altura do rosto em relação à altura do recorte
+var FACE_CENTER_X = 0.5                     // centro do rosto na horizontal (0.5 = centralizado)
 let FACE_CENTER_Y = 0.46                    // centro do rosto a 46% do topo (sobra espaço acima da cabeça)
 let QUALITY = 0.82
 
 let allArgs = CommandLine.arguments
 let EXTEND = allArgs.contains("--estender")
 if let r = allArgs.first(where: { $0.hasPrefix("--rosto=") }), let v = Double(r.dropFirst(8)) { FACE_RATIO = v }
+if let r = allArgs.first(where: { $0.hasPrefix("--centro-x=") }), let v = Double(r.dropFirst(11)) { FACE_CENTER_X = v }
 let args = allArgs.filter { !$0.hasPrefix("--") }
-guard args.count == 3 else { print("uso: swift crop_faces.swift <origem> <destino> [--estender] [--rosto=0.42]"); exit(1) }
+guard args.count == 3 else { print("uso: swift crop_faces.swift <origem> <destino> [--estender] [--rosto=0.42] [--centro-x=0.5]"); exit(1) }
 let src = URL(fileURLWithPath: args[1]), dst = URL(fileURLWithPath: args[2])
 try? FileManager.default.createDirectory(at: dst, withIntermediateDirectories: true)
 
@@ -63,14 +66,14 @@ for file in files {
 
     var ch = fh / FACE_RATIO
     var cw = ch * OUT_W / OUT_H
-    var x = fcx - cw / 2
+    var x = fcx - cw * FACE_CENTER_X
     var y = fcy - ch * FACE_CENTER_Y
     var scale = 1.0
     if !EXTEND {
         // Se o recorte ideal não cabe na foto, reduz (o rosto fica um pouco maior).
         scale = min(1, W / cw, H / ch)
         cw *= scale; ch *= scale
-        x = fcx - cw / 2
+        x = fcx - cw * FACE_CENTER_X
         y = fcy - ch * FACE_CENTER_Y
         x = max(0, min(x, W - cw))
         y = max(0, min(y, H - ch))

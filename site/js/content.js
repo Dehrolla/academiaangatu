@@ -81,7 +81,7 @@ window.ACADEMIA = {
       registry: "Registro a confirmar",
       area: "",
       modules: [3],
-      photo: "",
+      photo: "img/professores/bruno-amato.jpg",
       instagram: "",
       published: true,
       bio: "Médico de família e Comunidade com pós graduação em psiquiatria. Docente no curso de Medicina da UFSJ desde 2015. Foi professor do curso de pós graduação em saúde mental do Hospital Albert Einstein de São Paulo em 2024 e 2025."
