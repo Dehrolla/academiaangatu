@@ -46,6 +46,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 .section-head { display: flex; flex-direction: column; gap: 20px; max-width: 760px; margin-bottom: 64px; }
 .section-head--center { align-items: center; text-align: center; margin-left: auto; margin-right: auto; }
+.section-note { font-size: 13px; line-height: 140%; color: var(--text-subtle); margin-top: -8px; }
 .placeholder {
   display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
   color: var(--color-orange); border: 1px dashed #ffa60080; border-radius: 4px; padding: 2px 6px;
