@@ -44,7 +44,7 @@ window.ACADEMIA = {
       photo: "img/professores/mateus-candini.jpg",
       instagram: "mateus_candini",
       published: true,
-      bio: "Advogado, graduado em Direito pela PUC Minas e pós-graduado em Ciências Penais. Atualmente, é presidente da ANGATU — Associação de Cannabis Medicinal, sediada em Belo Horizonte, onde atua na promoção do acesso à cannabis para fins terapêuticos e no desenvolvimento institucional da entidade."
+      bio: "Advogado, graduado em Direito pela PUC Minas e pós-graduado em Ciências Penais. Atualmente, é presidente da ANGATU, sediada em Belo Horizonte, onde atua na promoção do acesso à cannabis para fins terapêuticos e no desenvolvimento institucional da entidade."
     },
     {
       name: "Lucas Candini",
@@ -54,7 +54,7 @@ window.ACADEMIA = {
       photo: "img/professores/lucas-candini.jpg",
       instagram: "lucascandini",
       published: true,
-      bio: "Advogado, graduado em Direito e pós-graduado em Direito Processual Civil. Atualmente, é vice-presidente da ANGATU — Associação de Cannabis Medicinal, sediada em Belo Horizonte, onde atua na promoção do acesso à cannabis para fins terapêuticos, nas relações institucionais e nos aspectos jurídicos e regulatórios relacionados à cannabis medicinal."
+      bio: "Advogado, graduado em Direito e pós-graduado em Direito Processual Civil. Atualmente, é vice-presidente da ANGATU, sediada em Belo Horizonte, onde atua na promoção do acesso à cannabis para fins terapêuticos, nas relações institucionais e nos aspectos jurídicos e regulatórios relacionados à cannabis medicinal."
     },
     {
       name: "Dra. Sâmara Bastos",
