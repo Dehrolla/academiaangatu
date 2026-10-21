@@ -3,7 +3,6 @@
   const data = window.ACADEMIA;
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const fmtMin = (m) => (m >= 60 ? `${Math.floor(m / 60)}h${String(m % 60).padStart(2, "0")}` : `${m} min`);
 
   // ---- Professores ------------------------------------------------------
   const avatar = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>';
@@ -30,28 +29,26 @@
   }
 
   // ---- Módulos ----------------------------------------------------------
+  // Aula no formato "Título: descrição" vira título em destaque + descrição.
+  const lesson = (text) => {
+    const i = text.indexOf(": ");
+    if (i < 0) return `<span class="lesson__title">${esc(text)}</span>`;
+    return `<span class="lesson__title">${esc(text.slice(0, i))}</span><span class="lesson__desc">${esc(text.slice(i + 2))}</span>`;
+  };
   const modulesEl = document.getElementById("modules");
   if (modulesEl) {
-    let total = 0;
-    modulesEl.innerHTML = data.modules.map((m, i) => {
-      const minutes = m.lessons.reduce((sum, l) => sum + l[1], 0);
-      total += minutes;
-      return `
+    modulesEl.innerHTML = data.modules.map((m, i) => `
       <details class="module"${i === 0 ? " open" : ""}>
         <summary>
           <span class="module__num">${String(i + 1).padStart(2, "0")}</span>
-          <span class="module__title"><b>${esc(m.title)}</b><small>${m.lessons.length} aulas · ${fmtMin(minutes)}</small></span>
+          <span class="module__title"><b>${esc(m.title)}</b></span>
           <span class="module__toggle" aria-hidden="true"></span>
         </summary>
         <ol class="lessons">
-          ${m.lessons.map((l, j) => `<li><span>${i + 1}.${j + 1}</span><span>${esc(l[0])}</span><span>${l[1]} min</span></li>`).join("")}
+          ${m.lessons.map((l, j) => `<li><span>${i + 1}.${j + 1}</span><span class="lesson">${lesson(l)}</span></li>`).join("")}
         </ol>
-      </details>`;
-    }).join("");
-    document.querySelectorAll("[data-total-hours]").forEach((el) => { el.textContent = `≈ ${Math.round(total / 60)}h`; });
-    document.querySelectorAll("[data-total-lessons]").forEach((el) => {
-      el.textContent = data.modules.reduce((s, m) => s + m.lessons.length, 0);
-    });
+      </details>`).join("");
+    document.querySelectorAll("[data-total-modules]").forEach((el) => { el.textContent = data.modules.length; });
   }
 
   // ---- Formulários de pré-venda ---------------------------------------
