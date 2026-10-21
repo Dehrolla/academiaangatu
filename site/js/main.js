@@ -21,7 +21,7 @@
             <h3 class="teacher__name">${esc(t.name)}</h3>
             ${t.area ? `<span class="teacher__area">${esc(t.area)}</span>` : ""}
           </div>
-          <span class="crm">${esc(t.registry)}</span>
+          ${t.registry ? `<span class="crm">${esc(t.registry)}</span>` : ""}
           <p class="teacher__bio">${esc(t.bio)}</p>
           ${t.instagram ? `<a class="teacher__ig" href="https://instagram.com/${encodeURIComponent(t.instagram)}" target="_blank" rel="noopener">${igIcon}@${esc(t.instagram)}</a>` : ""}
         </div>

@@ -11,7 +11,7 @@ window.ACADEMIA = {
 
   // ---- Professores (grid para 9) ----------------------------------------
   // Fonte: conteudo/professores/Professores-Academia-Angatu.xlsx (fora do repositório).
-  // registry: CRM, OAB ou CRF. modules: módulos que a pessoa leciona (não aparece no card; só referência).
+  // registry: CRM, OAB ou CRF (vazio esconde a etiqueta). modules: módulos que a pessoa leciona (não aparece no card; só referência).
   // photo: recorte gerado por tools/crop_faces.swift; vazio mostra o avatar padrão.
   // published: só true depois da autorização de uso de imagem. Para ver todos,
   // inclusive os não publicados, abra a página com ?previa na URL.
@@ -68,13 +68,13 @@ window.ACADEMIA = {
     },
     {
       name: "Dr. Antônio de Oliveira",
-      registry: "CRF-MG 00000",
+      registry: "",
       area: "Farmacêutico",
       modules: [2],
       photo: "img/professores/antonio-oliveira.jpg",
       instagram: "",
       published: true,
-      bio: "Professor Associado do Departamento de Farmacologia da UFMG. Farmacêutico pela UFMG, possui mestrado em Farmacologia, doutorado em Neuroquímica pela Universidade de Freiburg (Alemanha) e pós-doutorado em Neurociências pela Universidade da Flórida (EUA) e pela UFMG."
+      bio: "Professor Titular do Departamento de Farmacologia da UFMG. Farmacêutico e mestre em Farmacologia pela UFMG, doutorado em Neuroquímica pela Universidade de Freiburg (Alemanha) e pós-doutorado em Neurociências pela Universidade da Flórida (EUA) e pela UFMG."
     },
     {
       name: "Dr. Bruno Amato",
