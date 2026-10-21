@@ -79,7 +79,7 @@ window.ACADEMIA = {
     {
       name: "Dr. Bruno Amato",
       registry: "CRM-MG 48.288",
-      area: "",
+      area: "Médico de família e comunidade",
       modules: [3],
       photo: "img/professores/bruno-amato.jpg",
       instagram: "",
