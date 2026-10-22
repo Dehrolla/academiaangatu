@@ -21,7 +21,7 @@ window.ACADEMIA = {
       registry: "CRM-MG 50.070",
       area: "Geriatria",
       modules: [5],
-      photo: "img/professores/camila-sampaio.jpg",
+      photo: "img/professores/camila-sampaio.jpg?v=nit1",
       instagram: "dra.camilasamptos",
       published: true,
       bio: "Médica de família e comunidade da prefeitura de Nova Lima desde 2011, Geriatria Feluma 2013, Endocrinologia IPEMED 2017, Cannabis Medicinal SBEC 2024."
@@ -71,7 +71,7 @@ window.ACADEMIA = {
       registry: "",
       area: "Neurocientista, PhD.",
       modules: [2],
-      photo: "img/professores/antonio-oliveira.jpg",
+      photo: "img/professores/antonio-oliveira.jpg?v=nit1",
       instagram: "",
       published: true,
       bio: "Professor Titular do Departamento de Farmacologia da UFMG. Farmacêutico e mestre em Farmacologia pela UFMG, doutorado em Neuroquímica pela Universidade de Freiburg (Alemanha) e pós-doutorado em Neurociências pela Universidade da Flórida (EUA) e pela UFMG."
@@ -81,7 +81,7 @@ window.ACADEMIA = {
       registry: "CRM-MG 48.288",
       area: "Médico de família e comunidade",
       modules: [3],
-      photo: "img/professores/bruno-amato.jpg",
+      photo: "img/professores/bruno-amato.jpg?v=nit1",
       instagram: "",
       published: true,
       bio: "Médico de família e Comunidade com pós graduação em psiquiatria. Docente no curso de Medicina da UFSJ desde 2015. Foi professor do curso de pós graduação em saúde mental do Hospital Albert Einstein de São Paulo em 2024 e 2025."
@@ -91,7 +91,7 @@ window.ACADEMIA = {
       registry: "OAB-MG 200.927",
       area: "Advogado",
       modules: [1],
-      photo: "img/professores/fernando-avila.jpg",
+      photo: "img/professores/fernando-avila.jpg?v=nit1",
       instagram: "fernando_c_avila",
       published: true,
       bio: "Advogado, mestre em Direito e presidente da Comissão de Cannabis Medicinal da OAB/MG. Consultor jurídico da Associação Angatu, atua na defesa do acesso à cannabis medicinal, na regulamentação do setor e na segurança jurídica das associações e dos pacientes."
@@ -101,7 +101,7 @@ window.ACADEMIA = {
       registry: "CRM-MG 39.103",
       area: "Clínica Médica",
       modules: [7],
-      photo: "img/professores/alexandre-versiani.jpg",
+      photo: "img/professores/alexandre-versiani.jpg?v=nit1",
       instagram: "alexandreversiani",
       published: true,
       bio: "Alexandre Silva Versiani é médico, graduado pela Universidade Estadual de Montes Claros (UNIMONTES). Possui certificação internacional em Cannabis Medicinal pela Wecann Academy e é membro da Associação Médica Brasileira de Endocanabinologia. Atualmente coordena o Núcleo de Cannabis Medicinal e Psicologia da Dor do Hospital Aroldo Tourinho."
