@@ -134,9 +134,9 @@ window.ACADEMIA = {
     {
       title: "Introdução à prescrição de Cannabis Medicinal",
       lessons: [
-        "Nome da aula",
-        "Nome da aula",
-        "Nome da aula"
+        "Correlação do sistema endocanabinoide com a clínica",
+        "Prescrição básica e orientações gerais de prescrição dos fitocanabinoides",
+        "Evidência clínica de efetividade dos fitocanabinoides"
       ]
     },
     {
