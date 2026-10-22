@@ -61,10 +61,10 @@ window.ACADEMIA = {
       registry: "CRM-MG 82.433",
       area: "Psiquiatria",
       modules: [4],
-      photo: "img/professores/samara-bastos.jpg",
+      photo: "img/professores/samara-bastos.jpg?v=2",
       instagram: "drasamarabastos",
       published: true,
-      bio: "Médica de família e comunidade, especializada em psiquiatria pelo Hospital Israelita Albert Einstein e pós graduada em Cannabis Medicinal."
+      bio: "Médica de família e comunidade, especializada em Psiquiatria pelo Hospital Israelita Albert Einstein e pós graduada em Cannabis Medicinal. Referência na prescrição de canabinoides no Brasil, já atendeu mais de 3 mil pacientes. Idealizadora da mentoria \"Cannabis Além da Receita\", capacitando médicos de todos os estados brasileiros com vivência prática de medicina endocanabinoide aplicada ao consultório particular. Acredita em saúde com afeto, ciência e acesso!"
     },
     {
       name: "Dr. Antônio de Oliveira",
