@@ -6,6 +6,8 @@
 // de aumentar o rosto, completa as bordas com uma versão desfocada da própria foto.
 // --rosto=N: altura do rosto em relação ao recorte (padrão 0.42).
 // --centro-x=N: posição horizontal do centro do rosto no recorte (padrão 0.5 = centralizado).
+// --nitidez[=N]: aplica nitidez leve (unsharp mask) no resultado; N é a intensidade (padrão 0.45).
+//   Use só em fotos de origem pequena; não recupera detalhe, apenas define bordas.
 //
 // Para cada imagem: detecta o maior rosto (framework Vision do macOS), recorta
 // na proporção do card (4:3,4) com o rosto centralizado e ocupando FACE_RATIO
@@ -29,8 +31,10 @@ let allArgs = CommandLine.arguments
 let EXTEND = allArgs.contains("--estender")
 if let r = allArgs.first(where: { $0.hasPrefix("--rosto=") }), let v = Double(r.dropFirst(8)) { FACE_RATIO = v }
 if let r = allArgs.first(where: { $0.hasPrefix("--centro-x=") }), let v = Double(r.dropFirst(11)) { FACE_CENTER_X = v }
+var SHARPEN = 0.0
+if let r = allArgs.first(where: { $0.hasPrefix("--nitidez") }) { SHARPEN = Double(r.dropFirst(10)) ?? 0.45 }
 let args = allArgs.filter { !$0.hasPrefix("--") }
-guard args.count == 3 else { print("uso: swift crop_faces.swift <origem> <destino> [--estender] [--rosto=0.42] [--centro-x=0.5]"); exit(1) }
+guard args.count == 3 else { print("uso: swift crop_faces.swift <origem> <destino> [--estender] [--rosto=0.42] [--centro-x=0.5] [--nitidez[=0.45]]"); exit(1) }
 let src = URL(fileURLWithPath: args[1]), dst = URL(fileURLWithPath: args[2])
 try? FileManager.default.createDirectory(at: dst, withIntermediateDirectories: true)
 
@@ -127,7 +131,14 @@ for file in files {
     }
     let out = dst.appendingPathComponent("\(name).jpg")
     let dest = CGImageDestinationCreateWithURL(out as CFURL, UTType.jpeg.identifier as CFString, 1, nil)!
-    CGImageDestinationAddImage(dest, ctx.makeImage()!, [kCGImageDestinationLossyCompressionQuality: QUALITY] as CFDictionary)
+    var final = ctx.makeImage()!
+    if SHARPEN > 0 {
+        let sharp = CIImage(cgImage: final).applyingFilter("CIUnsharpMask", parameters: [
+            kCIInputRadiusKey: 1.6, kCIInputIntensityKey: SHARPEN,
+        ]).cropped(to: CGRect(x: 0, y: 0, width: OUT_W, height: OUT_H))
+        final = CIContext().createCGImage(sharp, from: sharp.extent, format: .RGBA8, colorSpace: CGColorSpace(name: CGColorSpace.sRGB)!)!
+    }
+    CGImageDestinationAddImage(dest, final, [kCGImageDestinationLossyCompressionQuality: QUALITY] as CFDictionary)
     CGImageDestinationFinalize(dest)
 
     let upscale = OUT_H / ch
