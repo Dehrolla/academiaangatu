@@ -93,7 +93,7 @@
         nome: form.elements.nome.value.trim(),
         email: form.elements.email.value.trim(),
         whatsapp: form.elements.whatsapp.value.replace(/\D/g, ""),
-        origem: form.dataset.origem || "pre-venda-497",
+        origem: form.dataset.origem || "pre-venda-597",
         pagina: location.href.split("#")[0],
         website: form.elements.website.value // honeypot anti-spam
       };
