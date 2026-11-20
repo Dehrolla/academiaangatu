@@ -1,4 +1,4 @@
-/* Academia Angatu — renderização do conteúdo e formulário de pré-venda */
+/* Academia Angatu — renderização do conteúdo */
 (function () {
   const data = window.ACADEMIA;
 
@@ -51,71 +51,4 @@
     document.querySelectorAll("[data-total-modules]").forEach((el) => { el.textContent = data.modules.length; });
   }
 
-  // ---- Formulários de pré-venda ---------------------------------------
-  // Os leads vão para a planilha do Google via Apps Script
-  // (integrations/google-sheets). A URL /exec fica em leadEndpoint (js/content.js).
-  // Cada <form class="lead-form"> tem data-origem para saber de qual card veio o lead.
-  const rules = {
-    nome: (v) => (v.trim().split(/\s+/).length >= 2 ? "" : "Informe nome e sobrenome."),
-    email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "Informe um e-mail válido."),
-    whatsapp: (v) => (v.replace(/\D/g, "").length >= 10 ? "" : "Informe o WhatsApp com DDD.")
-  };
-
-  document.querySelectorAll("form.lead-form").forEach((form) => {
-    const phone = form.elements.whatsapp;
-    phone.addEventListener("input", () => {
-      const d = phone.value.replace(/\D/g, "").slice(0, 11);
-      let out = d;
-      if (d.length > 2) out = `(${d.slice(0, 2)}) ${d.slice(2)}`;
-      if (d.length > 7) out = `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}`;
-      phone.value = out;
-    });
-
-    const btn = form.querySelector("button[type=submit]");
-    const btnLabel = btn.textContent;
-    const success = form.parentElement.querySelector(".lead-success");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      let firstInvalid = null;
-      Object.keys(rules).forEach((name) => {
-        const input = form.elements[name];
-        const msg = rules[name](input.value);
-        input.setAttribute("aria-invalid", msg ? "true" : "false");
-        form.querySelector(`[data-error-for="${name}"]`).textContent = msg;
-        if (msg && !firstInvalid) firstInvalid = input;
-      });
-      if (firstInvalid) { firstInvalid.focus(); return; }
-
-      btn.disabled = true; btn.textContent = "Enviando…";
-      form.querySelector("[data-error-for=form]").textContent = "";
-      const payload = {
-        nome: form.elements.nome.value.trim(),
-        email: form.elements.email.value.trim(),
-        whatsapp: form.elements.whatsapp.value.replace(/\D/g, ""),
-        origem: form.dataset.origem || "pre-venda-597",
-        pagina: location.href.split("#")[0],
-        website: form.elements.website.value // honeypot anti-spam
-      };
-
-      try {
-        const endpoint = data.leadEndpoint || form.dataset.endpoint;
-        if (!endpoint) throw new Error("leadEndpoint não configurado em js/content.js");
-        // text/plain evita a requisição de preflight (CORS), que o Apps Script não responde.
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-        const result = await res.json();
-        if (!res.ok || !result.ok) throw new Error(result.error || res.status);
-        form.hidden = true;
-        if (success) success.hidden = false;
-      } catch (err) {
-        console.error("Falha ao enviar lead:", err);
-        btn.disabled = false; btn.textContent = btnLabel;
-        form.querySelector("[data-error-for=form]").textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
-      }
-    });
-  });
 })();

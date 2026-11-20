@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="stylesheet" href="../design-system/angatu-tokens.css">
 <link rel="stylesheet" href="../design-system/angatu-components.css">
-<link rel="stylesheet" href="css/academia.css?v=24">
+<link rel="stylesheet" href="css/academia.css?v=29">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
       <a href="#beneficios">Benefícios</a>
       <a href="#investimento">Investimento</a>
     </nav>
-    <a class="btn btn--orange btn--sm" href="#investimento">Garantir minha vaga</a>
+    <a class="btn btn--orange btn--sm" href="https://pay.hotmart.com/Y108230072C?off=0noewdmf">Garantir minha vaga</a>
   </div>
 </header>
 
@@ -50,43 +50,19 @@
       </div>
     </div>
 
-    <aside class="hero-card" aria-labelledby="hero-card-title">
-      <div class="hero-card__price">
-        <s>De R$ 997</s>
-        <strong>R$ 597</strong>
-        <span class="body-small muted" id="hero-card-title">Entre na lista e receba o link com o valor de pré-venda antes da abertura oficial.</span>
-      </div>
-
-      <form class="lead-form lead-form--compact" data-origem="pre-venda-597-hero" novalidate>
-        <!-- honeypot: invisível para pessoas, robôs preenchem e o lead é descartado -->
-        <div class="hp" aria-hidden="true">
-          <label for="hero-website">Não preencha</label>
-          <input id="hero-website" name="website" tabindex="-1" autocomplete="off">
+    <aside class="hero-card offer-card" aria-labelledby="hero-card-title">
+      <span class="offer-label">Oferta especial de lançamento</span>
+      <h2 class="offer-title" id="hero-card-title">Seu próximo passo<br>começa aqui.</h2>
+      <div class="offer-price">
+          <span class="offer-price__was">De <s>R$ 997</s></span>
+          <div class="offer-price__now"><span class="offer-price__prefix">por</span><strong><span class="offer-price__currency">R$</span> 597</strong></div>
+          <span class="offer-price__saving">Oferta por tempo limitado</span>
         </div>
-        <div class="field">
-          <label class="field__label" for="hero-nome">Nome completo</label>
-          <input class="input" id="hero-nome" name="nome" autocomplete="name" placeholder="Seu nome e sobrenome">
-          <span class="field__error" data-error-for="nome" aria-live="polite"></span>
+      <ul class="offer-benefits"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span><span data-total-modules>7</span> módulos · 100% online</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span>12 meses de acesso ao curso</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span>Certificado de conclusão</span></li></ul>
+      <div class="checkout-actions">
+          <a class="btn btn--orange btn--block" href="https://pay.hotmart.com/Y108230072C?off=0noewdmf"><span>Comprar por R$ 597</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <p class="checkout-note">Finalize sua inscrição na Hotmart.</p>
         </div>
-        <div class="field">
-          <label class="field__label" for="hero-email">E-mail</label>
-          <input class="input" id="hero-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com">
-          <span class="field__error" data-error-for="email" aria-live="polite"></span>
-        </div>
-        <div class="field">
-          <label class="field__label" for="hero-whatsapp">WhatsApp</label>
-          <input class="input" id="hero-whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(31) 90000-0000">
-          <span class="field__error" data-error-for="whatsapp" aria-live="polite"></span>
-        </div>
-        <button class="btn btn--orange btn--block" type="submit">Quero garantir por R$ 597</button>
-        <span class="field__error" data-error-for="form" aria-live="polite"></span>
-        <p class="lead-form__legal">Ao se cadastrar, você concorda em receber comunicações da Academia Angatu por e-mail e WhatsApp.</p>
-      </form>
-
-      <div class="lead-success" hidden>
-        <b>Você está na lista! 🎉</b>
-        <p>Em breve enviaremos o link de pré-venda por e-mail e WhatsApp.</p>
-      </div>
     </aside>
   </div>
 </section>
@@ -141,7 +117,7 @@
     </div>
     <div class="modules" id="modules"><!-- renderizado por js/main.js --></div>
     <div style="display:flex;justify-content:center;margin-top:56px">
-      <a class="btn btn--orange" href="#investimento">Quero fazer o curso</a>
+      <a class="btn btn--orange" href="https://pay.hotmart.com/Y108230072C?off=0noewdmf">Quero fazer o curso</a>
     </div>
   </div>
 </section>
@@ -181,70 +157,28 @@
     <div class="section-head section-head--center">
       <span class="eyebrow">Investimento</span>
       <h2>Comece a prescrever com segurança</h2>
-      <p class="body-big muted">Condição especial para quem entrar na lista de pré-venda, antes da abertura oficial.</p>
+      <p class="body-big muted">Inscreva-se com o valor de lançamento e tenha acesso ao curso por 12 meses.</p>
     </div>
 
     <div class="pricing pricing--single">
-      <!-- Lançamento: oculto durante a pré-venda. Para reexibir, remova "hidden" e a classe pricing--single acima. -->
-      <article class="price-card" hidden>
-        <div class="price-card__name">Preço de lançamento</div>
-        <div class="price">
-          <s>De R$ 997</s>
-          <strong><sup>R$</sup>597</strong>
-          <small>à vista ou em até 12x no cartão <span class="placeholder">confirmar parcelas</span></small>
+      <!-- Compra direta -->
+      <article class="price-card price-card--featured offer-card offer-card--final" id="pre-venda" aria-labelledby="offer-final-title">
+        <span class="offer-label">Oferta especial de lançamento</span>
+        <div class="offer-heading">
+          <h3 class="offer-title" id="offer-final-title">O curso completo, no seu ritmo.</h3>
+          <p>Da base científica à prática no consultório.</p>
         </div>
-        <div class="check-list">
-          <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><span><span data-total-modules>7</span> módulos</span></div>
-          <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Casos clínicos comentados</div>
-          <div class="check-list__item" hidden><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Material de apoio</div>
-          <div class="check-list__item"><span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="#75fb91" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>Certificado de conclusão</div>
+        <ul class="offer-benefits"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span><span data-total-modules>7</span> módulos online</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span>12 meses de acesso</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span>Casos clínicos comentados</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg><span>Certificado de conclusão</span></li></ul>
+        <div class="offer-purchase">
+          <div class="offer-price">
+          <span class="offer-price__was">De <s>R$ 997</s></span>
+          <div class="offer-price__now"><span class="offer-price__prefix">por</span><strong><span class="offer-price__currency">R$</span> 597</strong></div>
+          <span class="offer-price__saving">Oferta por tempo limitado</span>
         </div>
-        <!-- TODO: trocar href pelo link do checkout (Hotmart, Eduzz, Kiwify etc.) -->
-        <a class="btn btn--line btn--block" href="#" style="margin-top:auto">Comprar por R$ 597</a>
-      </article>
-
-      <!-- Pré-venda -->
-      <article class="price-card price-card--featured" id="pre-venda">
-        <span class="price-card__badge">Pré-venda especial</span>
-        <div class="price-card__name">Lista de pré-venda</div>
-        <div class="price">
-          <s>De R$ 997</s>
-          <strong class="accent"><sup>R$</sup>597</strong>
-          <small>Cadastre-se e receba o link exclusivo com esse valor antes da abertura oficial.</small>
+          <div class="checkout-actions">
+          <a class="btn btn--orange btn--block" href="https://pay.hotmart.com/Y108230072C?off=0noewdmf"><span>Comprar por R$ 597</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <p class="checkout-note">Finalize sua inscrição na Hotmart.</p>
         </div>
-
-        <!-- O envio usa leadEndpoint de js/content.js (ver integrations/google-sheets/README.md) -->
-        <form class="lead-form" data-origem="pre-venda-597" novalidate>
-          <!-- honeypot: invisível para pessoas, robôs preenchem e o lead é descartado -->
-          <div class="hp" aria-hidden="true">
-            <label for="lead-website">Não preencha</label>
-            <input id="lead-website" name="website" tabindex="-1" autocomplete="off">
-          </div>
-          <div class="field">
-            <label class="field__label" for="lead-nome">Nome completo</label>
-            <input class="input" id="lead-nome" name="nome" autocomplete="name" placeholder="Seu nome e sobrenome">
-            <span class="field__error" data-error-for="nome" aria-live="polite"></span>
-          </div>
-          <div class="lead-form__row">
-            <div class="field">
-              <label class="field__label" for="lead-email">E-mail</label>
-              <input class="input" id="lead-email" name="email" type="email" autocomplete="email" placeholder="voce@email.com">
-              <span class="field__error" data-error-for="email" aria-live="polite"></span>
-            </div>
-            <div class="field">
-              <label class="field__label" for="lead-whatsapp">WhatsApp</label>
-              <input class="input" id="lead-whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(31) 90000-0000">
-              <span class="field__error" data-error-for="whatsapp" aria-live="polite"></span>
-            </div>
-          </div>
-          <button class="btn btn--orange btn--block" type="submit">Quero garantir por R$ 597</button>
-          <span class="field__error" data-error-for="form" aria-live="polite"></span>
-          <p class="lead-form__legal">Ao se cadastrar, você concorda em receber comunicações da Academia Angatu por e-mail e WhatsApp. Seus dados não serão compartilhados.</p>
-        </form>
-
-        <div class="lead-success" hidden>
-          <b>Você está na lista! 🎉</b>
-          <p>Em breve enviaremos o link de pré-venda por e-mail e WhatsApp.</p>
         </div>
       </article>
     </div>
@@ -319,7 +253,7 @@
   </div>
 </footer>
 
-<script src="js/content.js?v=24"></script>
-<script src="js/main.js?v=25"></script>
+<script src="js/content.js?v=27"></script>
+<script src="js/main.js?v=27"></script>
 </body>
 </html>

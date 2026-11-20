@@ -1,8 +1,10 @@
+> Integração histórica: a página de vendas agora direciona a compra para o checkout da Hotmart. Os formulários e o envio de leads foram removidos da página; os arquivos abaixo foram preservados como referência.
+
 # Leads da pré-venda → Google Sheets
 
 O formulário da landing page envia **nome, e-mail e WhatsApp** para um Google Apps Script, que grava uma linha por lead numa planilha sua. Não tem custo e não precisa de servidor.
 
-Cada linha registra: Data/hora · Nome · E-mail · WhatsApp · Origem · Página. A coluna Origem mostra de qual formulário veio o lead: `pre-venda-497-hero` (topo da página) ou `pre-venda-497` (seção de preços).
+Cada linha registra: Data/hora · Nome · E-mail · WhatsApp · Origem · Página. A coluna Origem mostra de qual formulário veio o lead: `lancamento-597-hero` (topo da página) ou `lancamento-597` (seção de preços).
 
 ## Configuração (uns 5 minutos, uma vez só)
 

@@ -103,13 +103,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 .chip svg { width: 16px; height: 16px; color: var(--color-accent); }
 
-.hero-card {
-  background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-xl);
-  padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: var(--shadow-dark);
-}
-.hero-card__price { display: flex; flex-direction: column; gap: 4px; }
-.hero-card__price s { color: var(--text-subtle); font-size: 16px; }
-.hero-card__price strong { font-size: 40px; line-height: 1; font-weight: 700; color: var(--color-accent); }
 @media (max-width: 991px) {
   .hero-lp__grid { grid-template-columns: 1fr; }
   .hero-lp { padding-top: calc(var(--navbar-height) + 56px); padding-bottom: 80px; }
@@ -218,54 +211,64 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .benefit p { font-size: 16px; line-height: 150%; color: var(--text-muted); }
 @media (max-width: 767px) { .benefits { grid-template-columns: 1fr; } }
 
-/* ---- Preços ------------------------------------------------------------ */
-.pricing { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; max-width: 1040px; margin: 0 auto; align-items: stretch; }
-.pricing--single { grid-template-columns: minmax(0, 672px); justify-content: center; } /* 560px + 20% */
-.pricing--single .price-card { padding: 56px 56px 48px; }
-.lead-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* ---- Oferta de lançamento ---------------------------------------------- */
+.pricing { display: grid; grid-template-columns: minmax(0, 672px); justify-content: center; margin: 0 auto; }
+.offer-card {
+  --offer-muted: #c4d0c9;
+  position: relative; min-width: 0; display: flex; flex-direction: column; gap: 24px;
+  padding: 36px 32px; color: var(--text); background: linear-gradient(170deg, #234240, #1c3433 60%);
+  border: 1px solid #75fb9166; border-top: 5px solid #75fb91; border-radius: 24px;
+  box-shadow: 0 24px 64px #00000033, 0 0 48px #75fb910a;
+}
+.offer-label {
+  align-self: flex-start; padding: 7px 11px; border-radius: 6px;
+  background: #75fb91; color: #1c3433;
+  font-size: 12px; font-weight: 700; letter-spacing: .035em; line-height: 145%; text-transform: uppercase;
+}
+.offer-title { font-size: 27px; font-weight: 500; line-height: 120%; letter-spacing: -.02em; }
+.offer-price { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.offer-price__was { color: var(--offer-muted); font-size: 16px; line-height: 150%; }
+.offer-price__was s { text-decoration-thickness: 1.5px; }
+.offer-price__now { display: flex; align-items: baseline; gap: 10px; line-height: 1; }
+.offer-price__prefix { color: var(--offer-muted); font-size: 16px; }
+.offer-price__now strong { color: var(--color-accent); display: flex; align-items: baseline; gap: 7px; font-size: 76px; font-weight: 700; letter-spacing: -.045em; }
+.offer-price__currency { font-size: 29px; font-weight: 500; letter-spacing: -.02em; }
+.offer-price__saving { color: var(--color-accent); font-size: 14px; font-weight: 500; line-height: 150%; margin-top: 6px; }
+.offer-benefits {
+  display: grid; gap: 12px; margin: 0; padding: 22px 0 0;
+  border-top: 1px solid var(--line-strong); list-style: none;
+}
+.offer-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 145%; }
+.offer-benefits svg { flex: none; width: 19px; height: 19px; margin-top: 1px; color: var(--color-accent); }
+.checkout-actions { display: flex; flex-direction: column; gap: 12px; }
+.checkout-actions .btn {
+  min-height: 58px; height: auto; padding: 16px 18px; gap: 12px;
+  font-weight: 700; font-size: 17px; line-height: 130%; text-align: center;
+  box-shadow: 0 4px 0 #c07d00; white-space: normal;
+}
+.checkout-actions .btn svg { flex: none; width: 20px; height: 20px; }
+.checkout-note { font-size: 13px; line-height: 150%; color: var(--offer-muted); text-align: center; }
+.offer-card a:focus-visible { outline-color: var(--color-accent); outline-offset: 5px; }
+.offer-card--final { padding: 44px 48px; gap: 28px; }
+.offer-card--final .offer-label { align-self: center; }
+.offer-heading { display: grid; gap: 10px; text-align: center; }
+.offer-heading .offer-title { font-size: 30px; }
+.offer-heading p { color: var(--offer-muted); font-size: 16px; line-height: 150%; }
+.offer-card--final .offer-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; border: 0; gap: 16px; }
+.offer-purchase { display: grid; gap: 24px; padding-top: 28px; border-top: 1px solid var(--line-strong); }
+.offer-card--final .offer-price { align-items: center; }
+.offer-card--final .offer-price__now strong { font-size: 88px; }
 @media (max-width: 640px) {
-  .pricing--single .price-card { padding: 48px 24px 32px; }
-  .lead-form__row { grid-template-columns: 1fr; }
+  .offer-card { padding: 28px 24px; gap: 22px; }
+  .offer-card--final .offer-benefits { grid-template-columns: 1fr; gap: 12px; }
+  .offer-heading .offer-title { font-size: 27px; }
 }
-@media (max-width: 860px) { .pricing { grid-template-columns: 1fr; } }
-.price-card {
-  position: relative; display: flex; flex-direction: column; gap: 28px; padding: 48px 40px;
-  background: var(--bg-surface); border: 1px solid var(--line); border-radius: var(--radius-xl);
+@media (max-width: 360px) {
+  .offer-card { padding: 24px 20px; }
+  .offer-price__now strong, .offer-card--final .offer-price__now strong { font-size: 64px; }
+  .offer-price__currency { font-size: 25px; }
+  .checkout-actions .btn { padding: 16px 10px; font-size: 16px; gap: 8px; }
 }
-.price-card--featured { background: linear-gradient(170deg, #234240, #1c3433 60%); border-color: #75fb9166; box-shadow: var(--glow-accent); }
-.price-card__badge {
-  position: absolute; top: -14px; left: 40px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  background: var(--color-accent); color: var(--color-dark); border-radius: 999px; padding: 6px 14px;
-}
-.price-card__name { font-size: 24px; font-weight: 500; }
-.price { display: flex; flex-direction: column; gap: 6px; }
-.price s { color: var(--text-subtle); font-size: 18px; }
-.price strong { font-size: 64px; line-height: 1; font-weight: 700; letter-spacing: -.02em; }
-.price strong sup { font-size: 24px; vertical-align: 28px; margin-right: 4px; font-weight: 500; }
-.price small { color: var(--text-muted); font-size: 15px; }
-.price-card .check-list { font-size: 16px; }
-.price-card .check-circle { background: #75fb911f; }
-
-/* Formulário de pré-venda */
-.lead-form { display: flex; flex-direction: column; gap: 16px; }
-.lead-form--compact { gap: 12px; }
-.lead-form--compact .input { height: 48px; font-size: 16px; }
-.lead-form--compact .field__label { margin-bottom: 6px; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.lead-form .field__label { font-size: 15px; margin-bottom: 8px; color: var(--text-muted); }
-.lead-form .input {
-  background: var(--bg-deep); color: var(--text); border-color: var(--line-strong);
-}
-.lead-form .input::placeholder { color: var(--text-subtle); }
-.lead-form .input:focus { border-color: var(--color-accent); }
-.lead-form .input[aria-invalid="true"] { border-color: #ff8a7a; }
-.field__error { font-size: 13px; color: #ff8a7a; margin-top: 6px; min-height: 0; }
-.lead-form__legal { font-size: 13px; line-height: 145%; color: var(--text-subtle); }
-.lead-success {
-  display: flex; flex-direction: column; gap: 10px; padding: 28px; border-radius: 16px;
-  background: var(--color-accent); color: var(--color-dark);
-}
-.lead-success b { font-size: 20px; }
 
 /* ---- Sobre a Angatu ------------------------------------------------- */
 .about { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
@@ -302,6 +305,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .disclaimer { font-size: 13px; line-height: 150%; color: var(--text-subtle); max-width: 420px; margin-top: 20px; }
 @media (max-width: 767px) { .site-footer__top { grid-template-columns: 1fr; } }
 
-/* Formulário compacto no card do hero */
-.hero-card .lead-form--compact .field__error:empty { display: none; }
-.hero-card .lead-form__legal { font-size: 12px; }
+/* Mantém a navegação e os textos dentro de telas estreitas. */
+@media (max-width: 360px) {
+  .site-nav__inner { gap: 12px; }
+  .site-nav .logo img { height: 32px; }
+  .site-nav .btn { padding: 0 10px; font-size: 14px; }
+  .about > * { min-width: 0; }
+  .about { overflow-wrap: anywhere; }
+}

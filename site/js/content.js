@@ -4,11 +4,6 @@
    ========================================================================== */
 
 window.ACADEMIA = {
-  // ---- Captura de leads --------------------------------------------------
-  // URL /exec do Apps Script (integrations/google-sheets/README.md).
-  // Vale para todos os formulários de pré-venda da página.
-  leadEndpoint: "https://script.google.com/macros/s/AKfycbyVL1npb0pSv4dugXZSVKmerBUCjocHujsk27XAdxqzkXn1kWGJNtC2NIarx0uM7lPSVg/exec",
-
   // ---- Professores (grid para 9) ----------------------------------------
   // Fonte: conteudo/professores/Professores-Academia-Angatu.xlsx (fora do repositório).
   // registry: CRM, OAB ou CRF (vazio esconde a etiqueta). modules: módulos que a pessoa leciona (não aparece no card; só referência).
