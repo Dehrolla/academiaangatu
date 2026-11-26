@@ -27,6 +27,12 @@ O domínio é configurado na Locaweb com um registro CNAME: `academia` → `dehr
 
 Para o endereço adicional `www.academia.angatumedicinal.org`, configurar outro CNAME na mesma zona: `www.academia` → `dehrolla.github.io`. O domínio principal do GitHub Pages continua sendo `academia.angatumedicinal.org`; verificar a resolução DNS, o redirecionamento e a emissão do certificado para o endereço com `www` antes de considerá-lo disponível via HTTPS.
 
+## Google Analytics
+
+A página usa o contêiner Google Tag Manager `GTM-K3DT2HZV`, configurado com o fluxo GA4 `G-EYWLB626MD` (propriedade `565945045`). O código está em `site/index.html`, compartilhado pela raiz e por `/pre-venda/`.
+
+A configuração da tag é gerenciada e publicada no Tag Manager. Não adicionar uma segunda instalação direta de GA4 ao HTML, para evitar duplicação de visitas. A instalação no site mede o acesso à página; compras concluídas no checkout externo dependem da integração da Hotmart.
+
 ## Pré-visualizar localmente
 
 ```bash
