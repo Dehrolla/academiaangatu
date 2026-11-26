@@ -1,8 +1,8 @@
 # Publica academia.angatumedicinal.org no GitHub Pages a cada push na main.
 #
 # Estrutura publicada:
-#   /                 -> redireciona para /pre-venda/ (publish/index.html)
-#   /pre-venda/       -> site/
+#   /                 -> site/ (página de vendas)
+#   /pre-venda/       -> site/ (compatibilidade com links anteriores)
 #   /design-system/   -> só os CSS usados pela página
 name: Publicar site
 
@@ -32,9 +32,9 @@ jobs:
       - name: Montar a pasta do site
         run: |
           mkdir -p _site/pre-venda _site/design-system
+          cp -R site/. _site/
           cp -R site/. _site/pre-venda/
           cp design-system/angatu-tokens.css design-system/angatu-components.css _site/design-system/
-          cp publish/index.html _site/index.html
           cp publish/index.html _site/404.html
           cp site/img/favicon-32.png _site/favicon.ico   # navegadores pedem /favicon.ico na raiz
           echo "academia.angatumedicinal.org" > _site/CNAME
